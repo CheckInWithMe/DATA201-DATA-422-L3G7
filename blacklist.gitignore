@@ -2,3 +2,5 @@
 
 _config.yml
 data/raw
+.venv
+
