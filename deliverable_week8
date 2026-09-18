@@ -1,26 +1,17 @@
 import pandas as pd
 import glob
-import matplotlib.pyplot as plt
+import os
 
-
-# Find all 9 CSV files
-files = glob.glob(
-    r"C:\Users\daole\Downloads\listing\*.csv"
-)
+# Find all raw listing files
+files = glob.glob("listing/*.csv")
 
 print("Number of files:", len(files))
 
-for file in files:
-    print(file)
-
-
-# Read and filter Christchurch from all 9 datasets
 christchurch_data = []
 
 for file in files:
     df = pd.read_csv(file)
 
-    # Filter Christchurch
     df_christchurch = df[
         df["neighbourhood_group"].astype(str).str.contains(
             "Christchurch",
@@ -29,23 +20,17 @@ for file in files:
         )
     ].copy()
 
-    # Add Christchurch data from this file
     christchurch_data.append(df_christchurch)
 
-
-# Combine all 9 Christchurch datasets
+# Combine datasets
 combined = pd.concat(
     christchurch_data,
     ignore_index=True
 )
 
-print(
-    "Number of Christchurch listings:",
-    len(combined)
-)
+print("Number of Christchurch listings:", len(combined))
 
-
-# Keep only the required columns
+# Keep required columns
 columns_to_keep = [
     "latitude",
     "longitude",
@@ -58,18 +43,19 @@ columns_to_keep = [
 
 cleaned_christchurch = combined[columns_to_keep].copy()
 
-
-# Check the cleaned dataset
+# Check missing values
 print("\nCleaned dataset shape:")
 print(cleaned_christchurch.shape)
 
 print("\nMissing values:")
 print(cleaned_christchurch.isnull().sum())
 
+# Create output folder if it does not exist
+os.makedirs("output", exist_ok=True)
 
-# Save cleaned dataset locally
+# Save cleaned dataset
 cleaned_christchurch.to_csv(
-    r"C:\Users\daole\Downloads\christchurch_airbnb_cleaned.csv",
+    "output/christchurch_airbnb_cleaned.csv",
     index=False
 )
 
