@@ -70,11 +70,17 @@ License: https://creativecommons.org/licenses/by/4.0/
 After reviewing the Christchurch Airbnb listing dataset. the following columns are selected which are relevant to our project. 
 
 Id - Uniquely identify the Airbnb listing. It is useful for checking duplicates.
+
 Neighbourhood - Identifies the area where the property is located. Allow comparison and grouping by the area of the property.
+
 Latitude & Longitude - Provide coordinates of each property. These columns are useful for geographical analysis and provide the precise location of the listing.
+
 Room type - Identifies the type of rental property. It will allow us to compare the type of accomodation and the price.
+
 Price - Provides the rental price of the listing. Important for rental price analysis
+
 Availability_365 - Shows the number of days the property is available over a 365 days period. It is useful to analyse the availability of the property.
+
 Month_year - Needed to align the airbnb data whith the tenancy service timeframe.
 
 No timeframe filtering has been applied to the Airbnb dataset at this stage. The timeframe will be considered when preparing the datasets for comparison with the Tenancy Services data.
