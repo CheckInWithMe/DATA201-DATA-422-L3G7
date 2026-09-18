@@ -84,23 +84,25 @@ Column definitions are paraphrased from the following websites
 
 | Variables                        | Data types   | Descrition                                                                                                     
 | -------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------- 
-| Timeframe                        | date         | Month for which data is recorded(the day of the date is always 01)
+| Timeframe                        | string       | Month for which data is recorded(the day of the date is always 01)
 | Location Id                      | integer      | 6 digit code determined by SA2-2019 area definitions. (SA2-2019 encompasses areas with 2000-4000 people in city council areas)
 | Dwelling Type                    | string       | Can take the values: Apartment, Boarding House, Flat, House, Room, ALL(ALL is for statistics applied across all dwelling types)
 | Number of Beds                   | integer      | Number of bedrooms
 | Total Bonds                      | integer      | Number of tenancy agreements lodged in the month
 | Active Bonds                     | integer      | Number of tenancy agreements that starting from that month, are still active
 | Closed Bonds                     | integer      | Number of tenancy agreements that were ended within the month
-| Median Rent                      | integer      | Median of the rents in the private properties within the indicated SA2-2019 area.
-| Geometric Mean Rent              | integer      | Obtained by multiplying n number of rents within the SA2-2019 area together then taking the nth root of the result. This can be used instead of the median/mean as it is less influenced by outliers.
-| Upper Quartile Rent              | integer      | 75th percentile of all rents in the SA2-2019 area(calculated by )
-| Lower Quartile Rent              | integer      | 25th percentile of all rents in the SA2-2019 area
+| Median Rent                      | float        | Median of the rents in the private properties within the indicated SA2-2019 area.
+| Geometric Mean Rent              | float        | Obtained by multiplying n number of rents within the SA2-2019 area together then taking the nth root of the result. This can be used instead of the median/mean as it is less influenced by outliers.
+| Upper Quartile Rent              | float        | 75th percentile of all rents in the SA2-2019 area(calculated by )
+| Lower Quartile Rent              | float        | 25th percentile of all rents in the SA2-2019 area
 | Log Std Dev Weekly               | float        | Sample standard deviation of natural logarithm weekly rent of bonds lodged within the period.
 
 # # Data Cleaning Process
 
-We decided to keep the following columns: Timeframe, Location Id, Dwelling Type, Median Rent, Active Bonds
+We decided to keep the following columns: Timeframe, Location Id, Dwelling Type, Median Rent, Total Bonds
 Using the median rent instead of the geometric mean rent would be adequate for our dataset because the median is not easily influenced by outlier values.
+We decided to keep use the total bonds row as this would show all the properties within the SA2-2019 area and would be a proxy for the availability of the properties.
+We decided to keep the Dwelling Type column to identify which rows are summary statistics(Dwelling Type = 'ALL') and see if we need these in the future and potentially filter these out. 
 
-We decided to filter the rows to the time period of October 2025 ~ April 2026. The start month of October 2025 is the same starting month as the AirBnb data. Other than this, we decided to not do any more filtering on the rows as we were not yet sure for which rows will be needed and which are not.
+We decided to filter the rows to the time period of October 2025 ~ April 2026. The start month of October 2025 is the same starting month as the AirBnb data. Other than this, we decided to not do any more filtering on the rows as we were not yet sure for which rows will be needed and which are not. 
  
