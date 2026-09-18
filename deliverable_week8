@@ -1,0 +1,76 @@
+import pandas as pd
+import glob
+import matplotlib.pyplot as plt
+
+
+# Find all 9 CSV files
+files = glob.glob(
+    r"C:\Users\daole\Downloads\listing\*.csv"
+)
+
+print("Number of files:", len(files))
+
+for file in files:
+    print(file)
+
+
+# Read and filter Christchurch from all 9 datasets
+christchurch_data = []
+
+for file in files:
+    df = pd.read_csv(file)
+
+    # Filter Christchurch
+    df_christchurch = df[
+        df["neighbourhood_group"].astype(str).str.contains(
+            "Christchurch",
+            case=False,
+            na=False
+        )
+    ].copy()
+
+    # Add Christchurch data from this file
+    christchurch_data.append(df_christchurch)
+
+
+# Combine all 9 Christchurch datasets
+combined = pd.concat(
+    christchurch_data,
+    ignore_index=True
+)
+
+print(
+    "Number of Christchurch listings:",
+    len(combined)
+)
+
+
+# Keep only the required columns
+columns_to_keep = [
+    "latitude",
+    "longitude",
+    "neighbourhood",
+    "neighbourhood_group",
+    "room_type",
+    "price",
+    "availability_365"
+]
+
+cleaned_christchurch = combined[columns_to_keep].copy()
+
+
+# Check the cleaned dataset
+print("\nCleaned dataset shape:")
+print(cleaned_christchurch.shape)
+
+print("\nMissing values:")
+print(cleaned_christchurch.isnull().sum())
+
+
+# Save cleaned dataset locally
+cleaned_christchurch.to_csv(
+    r"C:\Users\daole\Downloads\christchurch_airbnb_cleaned.csv",
+    index=False
+)
+
+print("\nCleaned dataset saved successfully.")
