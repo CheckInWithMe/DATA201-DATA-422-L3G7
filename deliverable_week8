@@ -35,12 +35,12 @@ columns_to_keep = [
     "latitude",
     "longitude",
     "neighbourhood",
-    "neighbourhood_group",
     "room_type",
     "price",
-    "availability_365"
+    "availability_365",
+    "month_year",
+    "id"
 ]
-
 cleaned_christchurch = combined[columns_to_keep].copy()
 
 # Check missing values
