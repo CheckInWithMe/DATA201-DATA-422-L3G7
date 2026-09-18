@@ -63,3 +63,18 @@ License: https://creativecommons.org/licenses/by/4.0/
 | availability_365                 | integer      | The number of days the Airbnb listing is available for booking within the next 365 days according to the host's calendar.
 | number_of_reviews_ltm            | integer      | The number of reviews the listing has in the last 12 months.
 | License                          | string       | The licence, permit or registration number
+
+
+# Selected columns for Airbnb Listing
+
+After reviewing the Christchurch Airbnb listing dataset. the following columns are selected which are relevant to our project. 
+
+Id - Uniquely identify the Airbnb listing. It is useful for checking duplicates.
+neighbourhood - Identifies the area where the property is located. Allow comparison and grouping by the area of the property.
+Latitude & Longitude - Provide coordinates of each property. These columns are useful for geographical analysis and provide the precise location of the listing.
+Room type - Identifies the type of rental property. It will allow us to compare the type of accomodation and the price.
+Price - Provides the rental price of the listing. Important for rental price analysis
+availability_365 - Shows the number of days the property is available over a 365 days period. It is useful to analyse the availability of the property.
+month_year - Needed to align the airbnb data whith the tenancy service timeframe.
+
+No timeframe filtering has been applied to the Airbnb dataset at this stage. The timeframe will be considered when preparing the datasets for comparison with the Tenancy Services data.
