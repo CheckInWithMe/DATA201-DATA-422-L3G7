@@ -64,14 +64,35 @@ License: https://creativecommons.org/licenses/by/4.0/
 | number_of_reviews_ltm            | integer      | The number of reviews the listing has in the last 12 months.
 | License                          | string       | The licence, permit or registration number
 
+
+# Selected columns for Airbnb Listing
+
+After reviewing the Christchurch Airbnb listing dataset. the following columns are selected which are relevant to our project. 
+
+Id - Uniquely identify the Airbnb listing. It is useful for checking duplicates.
+
+Neighbourhood - Identifies the area where the property is located. Allow comparison and grouping by the area of the property.
+
+Latitude & Longitude - Provide coordinates of each property. These columns are useful for geographical analysis and provide the precise location of the listing.
+
+Room type - Identifies the type of rental property. It will allow us to compare the type of accomodation and the price.
+
+Price - Provides the rental price of the listing. Important for rental price analysis
+
+Availability_365 - Shows the number of days the property is available over a 365 days period. It is useful to analyse the availability of the property.
+
+Month_year - Needed to align the airbnb data whith the tenancy service timeframe.
+
+No timeframe filtering has been applied to the Airbnb dataset at this stage. The timeframe will be considered when preparing the datasets for comparison with the Tenancy Services data.
+
 # Rental bond data
 
-# # Data Source
+# Data Source
 
 Source: https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/
 We have downloaded the 'Detailed quarterly report, January 2020 to April 2026' CSV file. This data documents the record of private bonds
 
-# # Columns
+# Columns
 Column definitions are paraphrased from the following websites
 
 - Timeframe, Median Rent, Geometric Mean Rent, Upper Quartile Rent, Lower Quartile Rent is provided by Tenancy Services(source: https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/)
@@ -97,7 +118,7 @@ Column definitions are paraphrased from the following websites
 | Lower Quartile Rent              | float        | 25th percentile of all rents in the SA2-2019 area
 | Log Std Dev Weekly               | float        | Sample standard deviation of natural logarithm weekly rent of bonds lodged within the period.
 
-# # Data Cleaning Process
+# Data Cleaning Process
 
 We decided to keep the following columns: Timeframe, Location Id, Dwelling Type, Median Rent, Total Bonds
 Using the median rent instead of the geometric mean rent would be adequate for our dataset because the median is not easily influenced by outlier values.
