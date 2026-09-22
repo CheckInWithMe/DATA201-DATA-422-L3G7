@@ -9,9 +9,9 @@ def date_filter(date): #matches regex to dates.
     if match:
         return date #keeps original string. No need to convert to date format yet.
     return numpy.nan
-    
+
 def master(): #run master() to import and clean the data!
-    tenancy = pandas.read_csv('Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv', skiprows=[1, 2]) #These two rows instantly are invalid.
+    tenancy = pandas.read_csv('data/raw/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv', skiprows=[1, 2]) #These two rows instantly are invalid.
     pandas.set_option('display.max_columns', None) #For nice printing view to verify the data.
     tenancy = tenancy[['TimeFrame', 'Location Id', 'Dwelling Type', 'Median Rent', 'Total Bonds']]
     tenancy['TimeFrame'] = tenancy['TimeFrame'].apply(date_filter)
@@ -22,4 +22,7 @@ def master(): #run master() to import and clean the data!
     tenancy = tenancy.reset_index()
     print(tenancy.iloc[-1]) #to hide, put a # in front of this line and the line below.
     print(tenancy.head())
-    return tenancy.to_csv('Detailed-Quarterly-Tenancy.csv')
+    return tenancy.to_csv('data/processed/Detailed-Quarterly-Tenancy.csv')
+
+
+master()
