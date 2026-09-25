@@ -126,4 +126,20 @@ We decided to keep use the total bonds row as this would show all the properties
 We decided to keep the Dwelling Type column to identify which rows are summary statistics(Dwelling Type = 'ALL') and see if we need these in the future and potentially filter these out. 
 
 We decided to filter the rows to the time period of October 2025 ~ April 2026. The start month of October 2025 is the same starting month as the AirBnb data. Other than this, we decided to not do any more filtering on the rows as we were not yet sure for which rows will be needed and which are not. 
- 
+
+
+ ## Tram
+file.py
+
+- achang
+
+
+file.py 
+-asd
+
+asd
+ ## Dao
+
+ ## Sakshi
+
+ ## William
