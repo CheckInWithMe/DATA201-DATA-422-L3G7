@@ -108,7 +108,7 @@ Column definitions are paraphrased from the following websites
 | Timeframe                        | string       | Month for which data is recorded(the day of the date is always 01)
 | Location Id                      | integer      | 6 digit code determined by SA2-2019 area definitions. (SA2-2019 encompasses areas with 2000-4000 people in city council areas)
 | Dwelling Type                    | string       | Can take the values: Apartment, Boarding House, Flat, House, Room, ALL(ALL is for statistics applied across all dwelling types)
-| Number of Beds                   | integer      | Number of bedrooms
+| Number of Beds                   | integer      | Number of bedrooms. Can take the values: 1, 2, 3, 4, ALL(ALL is for statistics applied across all dwelling types)
 | Total Bonds                      | integer      | Number of tenancy agreements lodged in the month
 | Active Bonds                     | integer      | Number of tenancy agreements that starting from that month, are still active
 | Closed Bonds                     | integer      | Number of tenancy agreements that were ended within the month
@@ -120,13 +120,17 @@ Column definitions are paraphrased from the following websites
 
 # Data Cleaning Process
 
-We decided to keep the following columns: Timeframe, Location Id, Dwelling Type, Median Rent, Total Bonds
+We decided to keep the following columns: Timeframe, Location Id, Dwelling Type, Number of Beds, Median Rent, Total Bonds
 Using the median rent instead of the geometric mean rent would be adequate for our dataset because the median is not easily influenced by outlier values.
 We decided to keep use the total bonds row as this would show all the properties within the SA2-2019 area and would be a proxy for the availability of the properties.
 We decided to keep the Dwelling Type column to identify which rows are summary statistics(Dwelling Type = 'ALL') and see if we need these in the future and potentially filter these out. 
+We decided to keep the Number of Beds column to identify which rows are summary statistics(Dwelling Type = 'ALL') and see if we need these in the future and potentially filter these out. 
 
 We decided to filter the rows to the time period of October 2025 ~ April 2026. The start month of October 2025 is the same starting month as the AirBnb data. Other than this, we decided to not do any more filtering on the rows as we were not yet sure for which rows will be needed and which are not. 
 
+# Deliverable 6
+
+We decided that the short term rentals are defined as less than or up to a month rentals while the long term rentals are defined as longer than a month. we based this decision based on information from IRD(https://www.taxtechnical.ird.govt.nz/overviews/short-stay-accommodation)
 
  ## Tram
 file.py
