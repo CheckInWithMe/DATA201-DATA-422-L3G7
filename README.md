@@ -132,16 +132,32 @@ We decided to filter the rows to the time period of October 2025 ~ April 2026. T
 
 We decided that the short term rentals are defined as less than or up to a month rentals while the long term rentals are defined as longer than a month. we based this decision based on information from IRD(https://www.taxtechnical.ird.govt.nz/overviews/short-stay-accommodation)
 
+# Changes 
+
+The following rules were implemented in the file organisation:
+- three folders: data(holds all csv files), src(holds all python files), output(holds other files)
+
+The following rules were implemented in each python file:
+- at the top have a docstring that describes what your program does(what the inputs/outputs are)
+- make clear with a comment where you're supposed to change the working directory
+- define parameters, read in inputs, load libraries/packages at the top of the file
+- no sensitive data explicitly stored in code
+- clear variable/function names
+- comments where necessary
+
+For each of our files, we also added a sanity check that we would think is appopriate
+
  ## Tram
 file.py
+- changes
 
-- achang
+
+christchurch_air_bnb_appended.py
+- did not explicitly store the API key in the code
+- docstrings for functions and at top of file
+- sanity check: manually run query on browser and check the sa22026 codes and names for the first 10 coordinates
 
 
-file.py 
--asd
-
-asd
  ## Dao
 
  ## Sakshi
