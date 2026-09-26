@@ -32,14 +32,14 @@ print("Number of Christchurch listings:", len(combined))
 
 # Keep required columns
 columns_to_keep = [
+    "id",
     "latitude",
     "longitude",
     "neighbourhood",
     "room_type",
     "price",
     "availability_365",
-    "month_year",
-    "id"
+    "month_year"
 ]
 cleaned_christchurch = combined[columns_to_keep].copy()
 
