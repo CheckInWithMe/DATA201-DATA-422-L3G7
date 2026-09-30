@@ -1,4 +1,4 @@
-'''Module that cleans quarterly 2020-2026 Tenancy data to specified requirements: Location Id, TimeFrame between 2025-10-01 and 2026-04-01, Dwelling Type and Median Rent.'''
+'''Module that cleans quarterly 2020-2026 Tenancy data to specified requirements: Location Id, TimeFrame between 2025-10-01 and 2026-04-01, Dwelling Type, Total Bonds and Median Rent.'''
 import pandas
 import numpy
 import re
