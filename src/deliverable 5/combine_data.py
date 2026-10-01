@@ -20,17 +20,13 @@ Parameters:
     3. Output file: data/processed/christchurch_airbnb_tenancy_joined.csv
     4. Christchurch Central area code: 326600
 """
-
+# change the file paths if required
 airbnb_file_path="data/processed/christchurch_air_bnb_code_name_appended.csv"
 tenancy_file_path="data/processed/Detailed-Quarterly-Tenancy.csv"
 output_file_path="data/processed/christchurch_airbnb_tenancy_joined.csv"
 
 """
-    Reads the Airbnb and tenancy CSV files and returns them as DataFrames.
-
-    Parameters:
-        airbnb_file_path (str): Path to the Airbnb CSV file.
-        tenancy_file_path (str): Path to the tenancy CSV file.
+Reads the Airbnb and tenancy CSV files and returns them as DataFrames.
 """
 def read_csv_file(airbnb_file_path, tenancy_file_path):
     tenancy_data = pd.read_csv(tenancy_file_path)
@@ -108,4 +104,5 @@ print(
     "Rows without rental data:",
     merged_data['Median Rent'].isna().sum()
 )
+
 print("Median Airbnb price in Christchurch Central:", median_price)

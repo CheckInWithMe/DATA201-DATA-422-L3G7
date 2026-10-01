@@ -1,0 +1,307 @@
+<gmd:MD_Metadata xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.isotc211.org/2005/gmd">
+  <gmd:language>
+    <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeSpace="ISO639-2" codeListValue="eng">eng</gmd:LanguageCode>
+  </gmd:language>
+  <gmd:characterSet>
+    <gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeSpace="ISOTC211/19115" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+  </gmd:characterSet>
+  <gmd:hierarchyLevel>
+    <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeSpace="ISOTC211/19115" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+  </gmd:hierarchyLevel>
+  <gmd:hierarchyLevelName>
+    <gco:CharacterString>dataset</gco:CharacterString>
+  </gmd:hierarchyLevelName>
+  <gmd:contact>
+    <gmd:CI_ResponsibleParty>
+      <gmd:individualName>
+        <gco:CharacterString>Geospatial and Data Acquisition Team</gco:CharacterString>
+      </gmd:individualName>
+      <gmd:organisationName>
+        <gco:CharacterString>Stats NZ</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:phone>
+            <gmd:CI_Telephone>
+              <gmd:voice>
+                <gco:CharacterString>0508 525 525</gco:CharacterString>
+              </gmd:voice>
+            </gmd:CI_Telephone>
+          </gmd:phone>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>geography@stats.govt.nz</gco:CharacterString>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeSpace="ISOTC211/19115" codeListValue="owner">owner</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+  </gmd:contact>
+  <gmd:dateStamp>
+    <gco:Date>2026-01-01</gco:Date>
+  </gmd:dateStamp>
+  <gmd:metadataStandardName>
+    <gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
+  </gmd:metadataStandardName>
+  <gmd:metadataStandardVersion>
+    <gco:CharacterString>2007</gco:CharacterString>
+  </gmd:metadataStandardVersion>
+  <gmd:spatialRepresentationInfo>
+    <gmd:MD_VectorSpatialRepresentation>
+      <gmd:topologyLevel>
+        <gmd:MD_TopologyLevelCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopologyLevelCode" codeSpace="ISOTC211/19115" codeListValue="geometryOnly">geometryOnly</gmd:MD_TopologyLevelCode>
+      </gmd:topologyLevel>
+      <gmd:geometricObjects>
+        <gmd:MD_GeometricObjects>
+          <gmd:geometricObjectType>
+            <gmd:MD_GeometricObjectTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_GeometricObjectTypeCode" codeSpace="ISOTC211/19115" codeListValue="composite">composite</gmd:MD_GeometricObjectTypeCode>
+          </gmd:geometricObjectType>
+        </gmd:MD_GeometricObjects>
+      </gmd:geometricObjects>
+    </gmd:MD_VectorSpatialRepresentation>
+  </gmd:spatialRepresentationInfo>
+  <gmd:referenceSystemInfo>
+    <gmd:MD_ReferenceSystem>
+      <gmd:referenceSystemIdentifier>
+        <gmd:RS_Identifier>
+          <gmd:code>
+            <gco:CharacterString>2193</gco:CharacterString>
+          </gmd:code>
+          <gmd:codeSpace>
+            <gco:CharacterString>EPSG</gco:CharacterString>
+          </gmd:codeSpace>
+          <gmd:version>
+            <gco:CharacterString>6.15(9.0.0)</gco:CharacterString>
+          </gmd:version>
+        </gmd:RS_Identifier>
+      </gmd:referenceSystemIdentifier>
+    </gmd:MD_ReferenceSystem>
+  </gmd:referenceSystemInfo>
+  <gmd:identificationInfo>
+    <gmd:MD_DataIdentification>
+      <gmd:citation>
+        <gmd:CI_Citation>
+          <gmd:title>
+            <gco:CharacterString>SA22026_V1_00</gco:CharacterString>
+          </gmd:title>
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
+                <gco:DateTime>2026-01-01T12:00:00</gco:DateTime>
+              </gmd:date>
+              <gmd:dateType>
+                <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeSpace="ISOTC211/19115" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+          <gmd:citedResponsibleParty>
+            <gmd:CI_ResponsibleParty>
+              <gmd:individualName>
+                <gco:CharacterString>Geospatial and Data Acquisition Team</gco:CharacterString>
+              </gmd:individualName>
+              <gmd:organisationName>
+                <gco:CharacterString>Stats NZ</gco:CharacterString>
+              </gmd:organisationName>
+              <gmd:contactInfo>
+                <gmd:CI_Contact>
+                  <gmd:phone>
+                    <gmd:CI_Telephone>
+                      <gmd:voice>
+                        <gco:CharacterString>0508 525 525</gco:CharacterString>
+                      </gmd:voice>
+                    </gmd:CI_Telephone>
+                  </gmd:phone>
+                  <gmd:address>
+                    <gmd:CI_Address>
+                      <gmd:electronicMailAddress>
+                        <gco:CharacterString>geography@stats.govt.nz</gco:CharacterString>
+                      </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                  </gmd:address>
+                  <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                      <gmd:linkage>
+                        <gmd:URL>https://datafinder.stats.govt.nz</gmd:URL>
+                      </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                  </gmd:onlineResource>
+                </gmd:CI_Contact>
+              </gmd:contactInfo>
+              <gmd:role>
+                <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeSpace="ISOTC211/19115" codeListValue="owner">owner</gmd:CI_RoleCode>
+              </gmd:role>
+            </gmd:CI_ResponsibleParty>
+          </gmd:citedResponsibleParty>
+          <gmd:presentationForm>
+            <gmd:CI_PresentationFormCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_PresentationFormCode" codeSpace="ISOTC211/19115" codeListValue="mapDigital">mapDigital</gmd:CI_PresentationFormCode>
+          </gmd:presentationForm>
+        </gmd:CI_Citation>
+      </gmd:citation>
+      <gmd:abstract>
+        <gco:CharacterString>DescriptionRefer to the current geographies boundaries table for a list of all current geographies and recent updates.This dataset is the definitive version of statistical area 2 (SA2) boundaries as at 1 January 2026, as defined by Stats NZ. This version contains 2,396 SA2s (2,380 digitised and 16 with empty or null geometries (non-digitised)).SA2 is an output geography that provides higher aggregations of population data than can be provided at the statistical area 1 (SA1) level. The SA2 geography aims to reflect communities that interact together socially and economically. In populated areas, SA2s generally contain similar sized populations.The SA2 should:form a contiguous cluster of one or more SA1s, excluding exceptions below, allow the release of multivariate statistics with minimal data suppression,capture a similar type of area, such as a high-density urban area, farmland, wilderness area, and water area, be socially homogeneous and capture a community of interest. It may have, for example: a shared road network,shared community facilities, shared historical or social links, or socio-economic similarity,form a nested hierarchy with statistical output geographies and administrative boundaries. It must: be built from SA1s, either define or aggregate to define SA3s, urban areas, territorial authorities, and regional councils.SA2s in city council areas generally have a population of 2,000–4,000 residents while SA2s in district council areas generally have a population of 1,000–3,000 residents. In major urban areas, an SA2 or a group of SA2s often approximates a single suburb. In rural areas, rural settlements are included in their respective SA2 with the surrounding rural area. SA2s in urban areas where there is significant business and industrial activity, for example ports, airports, industrial, commercial, and retail areas, often have fewer than 1,000 residents. These SA2s are useful for analysing business demographics, labour markets, and commuting patterns.In rural areas, some SA2s have fewer than 1,000 residents because they are in conservation areas or contain sparse populations that cover a large area.To minimise suppression of population data, small islands with zero or low populations close to the mainland, and marinas are generally included in their adjacent land-based SA2.Zero or nominal population SA2sTo ensure that the SA2 geography covers all of New Zealand and aligns with New Zealand’s topography and local government boundaries, some SA2s have zero or nominal populations. These include:SA2s where territorial authority boundaries straddle regional council boundaries. These SA2s each have fewer than 200 residents and are: Arahiwi, Tiroa, Rangataiki, Kaimanawa, Taharua, Te More, Ngamatea, Whangamomona, and Mara.SA2s created for single islands or groups of islands that are some distance from the mainland or to separate large unpopulated islands from urban areas SA2s that represent inland water, inlets or oceanic areas including: inland lakes larger than 50 square kilometres, harbours larger than 40 square kilometres, major ports, other non-contiguous inlets and harbours defined by territorial authority, and contiguous oceanic areas defined by regional council. SA2s for non-digitised oceanic areas, offshore oil rigs, islands, and the Ross Dependency. Each SA2 is represented by a single meshblock. The following 16 SA2s are held in non-digitised form (SA2 code; SA2 name): 400001; New Zealand Economic Zone, 400002; Oceanic Kermadec Islands, 400003; Kermadec Islands, 400004; Oceanic Oil Rig Taranaki, 400005; Oceanic Campbell Island, 400006; Campbell Island, 400007; Oceanic Oil Rig Southland, 400008; Oceanic Auckland Islands, 400009; Auckland Islands, 400010 ; Oceanic Bounty Islands, 400011; Bounty Islands, 400012; Oceanic Snares Islands, 400013; Snares Islands, 400014; Oceanic Antipodes Islands, 400015; Antipodes Islands, 400016; Ross Dependency.SA2 numbering and namingEach SA2 is a single geographic entity with a name and a numeric code. The name refers to a geographic feature or a recognised place name or suburb. In some instances where place names are the same or very similar, the SA2s are differentiated by their territorial authority, for example, Gladstone (Invercargill City) and Gladstone (Carterton District). SA2 codes have six digits. North Island SA2 codes start with a ‘1’ or ‘2’ and South Island SA2 codes start with a ‘3’. They are numbered approximately north to south within their respective territorial authorities. In 2018, the last two digits of each code were 00, and when SA2 boundaries change only the last two digits of the code are changed, to ensure the north–south pattern is maintained.LineageThese boundaries are derived from the meshblock pattern. Using spatial processing tools, the meshblocks are dissolved to form higher-level geographies.The original vertices delineating the meshblock boundary pattern were digitised in 1991 from 1:5,000 scale urban maps and 1:50,000 scale rural maps. The magnitude of error of the original digital points would have been in the range of +/- 10 metres in urban areas and +/- 25 metres in rural areas. Where meshblock boundaries coincide with cadastral boundaries the magnitude of error will be within the range of 1–5 metres in urban areas and 1-100 metres in rural areas, this being the estimated magnitude of error in Landonline.High-definition versionThis high definition (HD) version is the most detailed geometry, suitable for use in GIS for geometric analysis operations and for the computation of areas, centroids and other metrics.LiabilityWhile care has been taken to compile these boundary coordinates, Stats NZ gives no warranty that the data supplied is free from error. Stats NZ shall not be liable for any loss suffered through the use, directly or indirectly, of any information, product or service.MacronsNames are provided with and without tohutō/macrons. The column name for those without macrons is suffixed ‘ascii’.Digital dataDigital boundary data became freely available on 1 July 2007.Further information To download geographic classifications in table formats such as CSV please use Ariā.For more information please refer to the  Statistical standard for geographic areas 2023.Contact: geography@stats.govt.nz</gco:CharacterString>
+      </gmd:abstract>
+      <gmd:purpose>
+        <gco:CharacterString>This dataset is the definitive version of statistical area 2 (SA2) boundaries as at 1 January 2026, as defined by Stats NZ. This version contains 2,396 SA2s (2,380 digitised and 16 with empty or null geometries (non-digitised)).</gco:CharacterString>
+      </gmd:purpose>
+      <gmd:credit>
+        <gco:CharacterString>Stats NZ – Tatauranga Aotearoa</gco:CharacterString>
+      </gmd:credit>
+      <gmd:pointOfContact>
+        <gmd:CI_ResponsibleParty>
+          <gmd:individualName>
+            <gco:CharacterString>Geospatial and Data Acquisition Team</gco:CharacterString>
+          </gmd:individualName>
+          <gmd:organisationName>
+            <gco:CharacterString>Stats NZ</gco:CharacterString>
+          </gmd:organisationName>
+          <gmd:contactInfo>
+            <gmd:CI_Contact>
+              <gmd:address>
+                <gmd:CI_Address>
+                  <gmd:electronicMailAddress>
+                    <gco:CharacterString>geography@stats.govt.nz</gco:CharacterString>
+                  </gmd:electronicMailAddress>
+                </gmd:CI_Address>
+              </gmd:address>
+            </gmd:CI_Contact>
+          </gmd:contactInfo>
+          <gmd:role>
+            <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeSpace="ISOTC211/19115" codeListValue="owner">owner</gmd:CI_RoleCode>
+          </gmd:role>
+        </gmd:CI_ResponsibleParty>
+      </gmd:pointOfContact>
+      <gmd:resourceMaintenance>
+        <gmd:MD_MaintenanceInformation>
+          <gmd:maintenanceAndUpdateFrequency>
+            <gmd:MD_MaintenanceFrequencyCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeSpace="ISOTC211/19115" codeListValue="asNeeded">asNeeded</gmd:MD_MaintenanceFrequencyCode>
+          </gmd:maintenanceAndUpdateFrequency>
+        </gmd:MD_MaintenanceInformation>
+      </gmd:resourceMaintenance>
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          <gmd:keyword>
+            <gco:CharacterString>Downloadable Data</gco:CharacterString>
+          </gmd:keyword>
+          <gmd:thesaurusName/>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          <gmd:keyword>
+            <gco:CharacterString>sa2</gco:CharacterString>
+          </gmd:keyword>
+          <gmd:keyword>
+            <gco:CharacterString>SA2</gco:CharacterString>
+          </gmd:keyword>
+          <gmd:keyword>
+            <gco:CharacterString>statistical area 2</gco:CharacterString>
+          </gmd:keyword>
+          <gmd:keyword>
+            <gco:CharacterString>Statistical Area 2</gco:CharacterString>
+          </gmd:keyword>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+      <gmd:resourceConstraints>
+        <gmd:MD_Constraints>
+          <gmd:useLimitation>
+            <gco:CharacterString>Creative Commons Attribution 4.0 International (CC BY 4.0)</gco:CharacterString>
+          </gmd:useLimitation>
+        </gmd:MD_Constraints>
+      </gmd:resourceConstraints>
+      <gmd:spatialRepresentationType>
+        <gmd:MD_SpatialRepresentationTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeSpace="ISOTC211/19115" codeListValue="vector">vector</gmd:MD_SpatialRepresentationTypeCode>
+      </gmd:spatialRepresentationType>
+      <gmd:language>
+        <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeSpace="ISO639-2" codeListValue="eng">eng</gmd:LanguageCode>
+      </gmd:language>
+      <gmd:characterSet>
+        <gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeSpace="ISOTC211/19115" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+      </gmd:characterSet>
+      <gmd:topicCategory>
+        <gmd:MD_TopicCategoryCode>boundaries</gmd:MD_TopicCategoryCode>
+      </gmd:topicCategory>
+      <gmd:environmentDescription>
+        <gco:CharacterString>Microsoft Windows Server 2016 Technical Preview Version 10.0 (Build 19045) ; Esri ArcGIS 13.1.3.41833</gco:CharacterString>
+      </gmd:environmentDescription>
+      <gmd:extent>
+        <gmd:EX_Extent>
+          <gmd:geographicElement>
+            <gmd:EX_GeographicBoundingBox>
+              <gmd:extentTypeCode>
+                <gco:Boolean>true</gco:Boolean>
+              </gmd:extentTypeCode>
+              <gmd:westBoundLongitude>
+                <gco:Decimal>-180</gco:Decimal>
+              </gmd:westBoundLongitude>
+              <gmd:eastBoundLongitude>
+                <gco:Decimal>180</gco:Decimal>
+              </gmd:eastBoundLongitude>
+              <gmd:southBoundLatitude>
+                <gco:Decimal>-47.841491</gco:Decimal>
+              </gmd:southBoundLatitude>
+              <gmd:northBoundLatitude>
+                <gco:Decimal>-33.559984</gco:Decimal>
+              </gmd:northBoundLatitude>
+            </gmd:EX_GeographicBoundingBox>
+          </gmd:geographicElement>
+        </gmd:EX_Extent>
+      </gmd:extent>
+    </gmd:MD_DataIdentification>
+  </gmd:identificationInfo>
+  <gmd:distributionInfo>
+    <gmd:MD_Distribution>
+      <gmd:distributionFormat>
+        <gmd:MD_Format>
+          <gmd:name>
+            <gco:CharacterString>Enterprise Geodatabase Feature Class</gco:CharacterString>
+          </gmd:name>
+          <gmd:version/>
+        </gmd:MD_Format>
+      </gmd:distributionFormat>
+    </gmd:MD_Distribution>
+  </gmd:distributionInfo>
+  <gmd:dataQualityInfo>
+    <gmd:DQ_DataQuality>
+      <gmd:scope>
+        <gmd:DQ_Scope>
+          <gmd:level>
+            <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeSpace="ISOTC211/19115" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+          </gmd:level>
+        </gmd:DQ_Scope>
+      </gmd:scope>
+      <gmd:lineage>
+        <gmd:LI_Lineage>
+          <gmd:statement>
+            <gco:CharacterString>These boundaries are derived from the meshblock pattern. Using spatial processing tools, the meshblocks are dissolved to form higher-level geographies.
+The original vertices delineating the meshblock boundary pattern were digitised in 1991 from 1:5,000 scale urban maps and 1:50,000 scale rural maps. The magnitude of error of the original digital points would have been in the range of +/- 10 metres in urban areas and +/- 25 metres in rural areas. Where meshblock boundaries coincide with cadastral boundaries the magnitude of error will be within the range of 1–5 metres in urban areas and 1-100 metres in rural areas, this being the estimated magnitude of error in Landonline.</gco:CharacterString>
+          </gmd:statement>
+        </gmd:LI_Lineage>
+      </gmd:lineage>
+    </gmd:DQ_DataQuality>
+  </gmd:dataQualityInfo>
+  <gmd:metadataMaintenance>
+    <gmd:MD_MaintenanceInformation>
+      <gmd:maintenanceAndUpdateFrequency>
+        <gmd:MD_MaintenanceFrequencyCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeSpace="ISOTC211/19115" codeListValue="asNeeded">asNeeded</gmd:MD_MaintenanceFrequencyCode>
+      </gmd:maintenanceAndUpdateFrequency>
+      <gmd:contact>
+        <gmd:CI_ResponsibleParty>
+          <gmd:individualName>
+            <gco:CharacterString>Geospatial and Data Acquisition Team</gco:CharacterString>
+          </gmd:individualName>
+          <gmd:organisationName>
+            <gco:CharacterString>Stats NZ</gco:CharacterString>
+          </gmd:organisationName>
+          <gmd:role>
+            <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeSpace="ISOTC211/19115" codeListValue="owner">owner</gmd:CI_RoleCode>
+          </gmd:role>
+        </gmd:CI_ResponsibleParty>
+      </gmd:contact>
+    </gmd:MD_MaintenanceInformation>
+  </gmd:metadataMaintenance>
+</gmd:MD_Metadata>
