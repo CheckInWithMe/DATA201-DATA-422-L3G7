@@ -148,9 +148,10 @@ The following rules were implemented in each python file:
 For each of our files, we also added a sanity check that we would think is appopriate
 
  ## Tram
-file.py
-- changes
-
+filter_chch_top_ten_review.py
+- clearly put the inputs at the top
+- minimised the number of repetitions
+- changed the directory to be more generalised
 
 christchurch_air_bnb_appended.py
 - did not explicitly store the API key in the code
