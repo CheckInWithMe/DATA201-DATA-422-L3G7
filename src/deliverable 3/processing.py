@@ -40,6 +40,7 @@ output_file_path = "data/processed/christchurch_data.csv"
 def combine_raw_data(folder_path):
     dataframes = []
     for file in os.listdir(folder_path):
+        if not file.endswith("_listings.csv"): continue
         file_path = os.path.join(folder_path, file)
         csv_data = pd.read_csv(file_path)
         month_year = " ".join(file.split("_")[:2]).title()
