@@ -1,11 +1,11 @@
-## Data principles
+# Data principles
 
-- we tried to divide work 4 equal ways
+- we tried to divide work(code and documentation) 4 equal ways
 - If the pipeline required certain steps to be done by one person before allowing others to do work, we tried to group that work for one person
 - When there was not enough work we prioritised having equal work
 
-## Deliverable 3
-# Sakshi's processing.py
+# Deliverable 3
+## Sakshi's processing.py
 1. Inputs to the pipeline
 
 The pipeline takes multiple raw CSV files containing Airbnb listing data as its input.
@@ -39,11 +39,11 @@ Step 3. Combine datasets: concatenate the individual DataFrames into one combine
 Step 4. Filter and save: keep only Christchurch City listings and save them to data/processed/christchurch_data.csv.
 Step 5. Generate statistical summaries: calculate dataset dimensions, data types, categorical frequencies, overall numerical statistics, and monthly numerical statistics.
 Step 6. Assess data completeness: count missing values in each column and print the results.
-# Dao's
+## Dao's
 
-# William's 
+## William's 
 
-# Tram's filter_chch_top_ten_review_py
+## Tram's filter_chch_top_ten_review_py
 1. Inputs to the pipeline
 
 The pipeline takes multiple raw Airbnb listing CSV files as input from the ./data/raw/ directory. These files are read using pandas and combined into a single DataFrame.
@@ -67,8 +67,8 @@ Step 4. Count Christchurch listings: Calculate the total number of Christchurch 
 Step 5. Rank and filter listings: Sort listings by number_of_reviews in descending order and select the top 10%.
 Step 6. Save and display results: Save the filtered listings to a CSV file, print the total Christchurch listing count, and display the saved dataset.
 
-## Deliverable 4
-# Dao's deliverable_week8
+# Deliverable 4
+## Dao's deliverable_week8
 1. Inputs to the pipeline
 
 The pipeline takes multiple raw Airbnb listing CSV files as input.
@@ -94,19 +94,42 @@ The number of missing values in each column of the cleaned dataset.
 3. Main steps in the pipeline
 
 Step 1. Find raw data: Find all CSV files in the listing/ directory.
-
 Step 2. Read the raw datasets: Read each CSV file into a pandas DataFrame.
-
 Step 3. Filter Christchurch listings: Filter each dataset to retain listings where neighbourhood_group contains "Christchurch", regardless of capitalisation and while ignoring missing values.
-
 Step 4. Combine datasets: Combine the Christchurch listings from all input files into a single DataFrame.
-
 Step 5. Select required columns: Keep only the columns needed for the cleaned dataset: listing ID, geographic coordinates, neighbourhood, room type, price, availability, and month/year.
-
 Step 6. Check data quality: Check the shape of the cleaned dataset and calculate the number of missing values in each column.
-
 Step 7. Save the processed data: Create the output folder if necessary and save the cleaned Christchurch Airbnb dataset as "output/christchurch_airbnb_cleaned.csv".
 
-## Deliverable 5
+## William's deliverable_week8
+1. Inputs to the pipeline
 
+The pipeline takes a quarterly Tenancy dataset containing rental information from 2020–2026 as its input.
+Input file: data/raw/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv
+Input format: CSV file.
+Expected data: Tenancy information containing fields such as: TimeFrame, Location Id, Dwelling Type, Number Of Beds, Median Rent, Total Bonds
+
+The pipeline uses these fields to select the required rental information and restrict the data to the specified timeframe and aggregated dwelling categories.
+
+2. Outputs from the pipeline
+- "data/processed/Detailed-Quarterly-Tenancy.csv"
+A cleaned Tenancy dataset containing records within the specified timeframe, valid location IDs, and aggregated dwelling and bedroom categories.
+-Printed final row
+Displays the final row of the cleaned dataset in the console for verification.
+-Printed first rows
+Displays the first five rows of the cleaned dataset in the console for verification.
+
+3. Main steps in the pipeline
+
+Step 1. Read raw data: Read the quarterly Tenancy CSV file from data/raw/, skipping the two invalid rows identified in the source file.
+Step 2. Select required columns: Keep only the columns required for the analysis: timeframe, location ID, dwelling type, number of beds, median rent, and total bonds.
+Step 3. Filter the timeframe: Use a regular expression to retain records from the specified timeframe, covering the relevant 2025 and 2026 quarters.
+Step 4. Remove invalid and missing data: Remove rows containing missing values, including records with invalid or missing timeframe and location information.
+Step 5. Clean location IDs: Convert Location Id to integers and remove invalid -99 location IDs by retaining only positive location IDs.
+Step 6. Filter dwelling and bedroom categories: Keep only records where both Dwelling Type and Number Of Beds are "ALL", ensuring that the dataset contains aggregated rental statistics rather than individual dwelling or bedroom categories.
+Step 7. Reset the index: Reset the DataFrame index after filtering the data.
+Step 8. Verify and save the data: Print the final row and first five rows for verification, then save the cleaned dataset to data/processed/Detailed-Quarterly-Tenancy.csv.
+
+# Deliverable 5
+## 
 
