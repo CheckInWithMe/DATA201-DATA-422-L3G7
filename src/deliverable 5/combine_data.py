@@ -91,6 +91,7 @@ convert_to_monthly_period(christchurch_data, tenancy_data)
 merged_data = join_airbnb_with_tenancy(christchurch_data, tenancy_data)
 save_data_to_csv(merged_data, output_file_path)
 median_price = calculate_median_price(christchurch_data, 326600)
+
 """
 CHECK MERGE RESULTS
 """
