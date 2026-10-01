@@ -163,3 +163,24 @@ christchurch_air_bnb_appended.py
  ## Sakshi
 
  ## William
+tenancy data cleaning by william day.py
+- renamed file to meet conventions (now tenancy_data_cleaning.py)
+- moved file to src
+- updated head docstring
+- sanity check: pandas head() to see columns are correct; intended to be run on an IDE in the terminal.
+
+comparison by region.py
+- renamed file to meet conventions (now comparison_by_region.py)
+- moved file to src
+- added head docstring
+- added more code comments
+- added auto program call
+- changed import/export location directories
+- sanity check: view html output of the file
+
+sa2_areas_map.html
+- moved file to data/processed
+
+added statsnz-statistical-area-2-2026-SHP to data/raw to allow comparison_by_region.py to be fully reproducable
+
+
