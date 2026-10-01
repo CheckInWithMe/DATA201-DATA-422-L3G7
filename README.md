@@ -161,6 +161,10 @@ christchurch_air_bnb_appended.py
  ## Dao
 
  ## Sakshi
+ combine_data.py and processing.py
+ - code cleaing: one method one purpose
+ - updated the docstring for both the files
+ - added the missing comments
 
  ## William
 tenancy data cleaning by william day.py
