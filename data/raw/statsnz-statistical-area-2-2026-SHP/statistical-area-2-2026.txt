@@ -1,0 +1,583 @@
+========================================================================
+ Statistical Area 2 2026
+------------------------------------------------------------------------
+ https://datafinder.stats.govt.nz/layer/123515-statistical-area-2-2026/
+========================================================================
+From: Stats NZ
+
+Description:
+  **Description**
+  
+  Refer to the [current geographies boundaries
+  table](https://datafinder.stats.govt.nz/data/?q=current+boundaries) for a list
+  of all current geographies and recent updates.
+  
+  This dataset is the definitive version of statistical area 2 (SA2) boundaries as
+  at 1 January 2026, as defined by Stats NZ. This version contains 2,311 SA2s
+  (excluding the 16 with empty or null geometries (non-digitised)).
+  
+  SA2 is an output geography that provides higher aggregations of population data
+  than can be provided at the statistical area 1 (SA1) level. The SA2 geography
+  aims to reflect communities that interact together socially and economically. In
+  populated areas, SA2s generally contain similar sized populations.
+  
+  The SA2 should:
+  
+  - form a contiguous cluster of one or more SA1s,
+  - excluding exceptions below, allow the release of multivariate statistics with
+  minimal data suppression,
+  - capture a similar type of area, such as a high-density urban area, farmland,
+  wilderness area, and water area,
+  - be socially homogeneous and capture a community of interest.
+  
+  It may have, for example:
+  
+  - a shared road network,
+  - shared community facilities,
+  - shared historical or social links, or
+  - socio-economic similarity,
+  - form a nested hierarchy with statistical output geographies and administrative
+  boundaries.
+  
+  It must:
+  
+  - be built from SA1s,
+  - either define or aggregate to define SA3s, urban areas, territorial
+  authorities, and regional councils.
+  
+  SA2s in city council areas generally have a population of 2,000–4,000 residents
+  while SA2s in district council areas generally have a population of 1,000–3,000
+  residents.
+  
+  In major urban areas, an SA2 or a group of SA2s often approximates a single
+  suburb. In rural areas, rural settlements are included in their respective SA2
+  with the surrounding rural area.
+  
+  SA2s in urban areas where there is significant business and industrial activity,
+  for example ports, airports, industrial, commercial, and retail areas, often
+  have fewer than 1,000 residents. These SA2s are useful for analysing business
+  demographics, labour markets, and commuting patterns.
+  
+  In rural areas, some SA2s have fewer than 1,000 residents because they are in
+  conservation areas or contain sparse populations that cover a large area.
+  
+  To minimise suppression of population data, small islands with zero or low
+  populations close to the mainland, and marinas are generally included in their
+  adjacent land-based SA2.
+  
+  ​
+  
+  **Zero or nominal population SA2s**
+  
+  To ensure that the SA2 geography covers all of New Zealand and aligns with New
+  Zealand’s topography and local government boundaries, some SA2s have zero or
+  nominal populations.
+  
+  These include:
+  
+  - SA2s where territorial authority boundaries straddle regional council
+  boundaries. These SA2s each have fewer than 200 residents and are: Arahiwi,
+  Tiroa, Rangataiki, Kaimanawa, Taharua, Te More, Ngamatea, Whangamomona, and
+  Mara.
+  - SA2s created for single islands or groups of islands that are some distance
+  from the mainland or to separate large unpopulated islands from urban areas
+  - SA2s that represent inland water, inlets or oceanic areas including: inland
+  lakes larger than 50 square kilometres, harbours larger than 40 square
+  kilometres, major ports, other non-contiguous inlets and harbours defined by
+  territorial authority, and contiguous oceanic areas defined by regional council.
+  - SA2s for non-digitised oceanic areas, offshore oil rigs, islands, and the Ross
+  Dependency. Each SA2 is represented by a single meshblock.
+  
+  The following 16 SA2s are held in non-digitised form (SA2 code; SA2 name):
+  
+  400001; New Zealand Economic Zone, 400002; Oceanic Kermadec Islands, 400003;
+  Kermadec Islands, 400004; Oceanic Oil Rig Taranaki, 400005; Oceanic Campbell
+  Island, 400006; Campbell Island, 400007; Oceanic Oil Rig Southland, 400008;
+  Oceanic Auckland Islands, 400009; Auckland Islands, 400010 ; Oceanic Bounty
+  Islands, 400011; Bounty Islands, 400012; Oceanic Snares Islands, 400013; Snares
+  Islands, 400014; Oceanic Antipodes Islands, 400015; Antipodes Islands, 400016;
+  Ross Dependency.
+  
+  ​
+  
+  **SA2 numbering and naming**
+  
+  Each SA2 is a single geographic entity with a name and a numeric code. The name
+  refers to a geographic feature or a recognised place name or suburb. In some
+  instances where place names are the same or very similar, the SA2s are
+  differentiated by their territorial authority, for example, Gladstone
+  (Invercargill City) and Gladstone (Carterton District).
+  
+  SA2 codes have six digits. North Island SA2 codes start with a ‘1’ or ‘2’ and
+  South Island SA2 codes start with a ‘3’. They are numbered approximately north
+  to south within their respective territorial authorities. In 2018, the last two
+  digits of each code were 00, and when SA2 boundaries change only the last two
+  digits of the code are changed, to ensure the north–south pattern is maintained.
+  
+  ​
+  
+  **Lineage**
+  
+  These boundaries are derived from the meshblock pattern. Using spatial
+  processing tools, the meshblocks are dissolved to form higher-level geographies.
+  
+  The original vertices delineating the meshblock boundary pattern were digitised
+  in 1991 from 1:5,000 scale urban maps and 1:50,000 scale rural maps. The
+  magnitude of error of the original digital points would have been in the range
+  of +/- 10 metres in urban areas and +/- 25 metres in rural areas. Where
+  meshblock boundaries coincide with cadastral boundaries the magnitude of error
+  will be within the range of 1–5 metres in urban areas and 1-100 metres in rural
+  areas, this being the estimated magnitude of error in Landonline.
+  
+  ​
+  
+  **High-definition version**
+  
+  This high definition (HD) version is the most detailed geometry, suitable for
+  use in GIS for geometric analysis operations and for the computation of areas,
+  centroids and other metrics.
+  
+  ​
+  
+  **Liability**
+  
+  While care has been taken to compile these boundary coordinates, Stats NZ gives
+  no warranty that the data supplied is free from error. Stats NZ shall not be
+  liable for any loss suffered through the use, directly or indirectly, of any
+  information, product or service.
+  
+  ​
+  
+  **Macrons**
+  
+  Names are provided with and without tohutō/macrons. The column name for those
+  without macrons is suffixed ‘ascii’.
+  
+  ​
+  
+  **Digital data**
+  
+  Digital boundary data became freely available on 1 July 2007.
+  
+  ​
+  
+  **Further information**
+  
+  To download geographic classifications in table formats such as CSV please use
+  [Ariā](https://aria.stats.govt.nz/aria/).
+  
+  For more information please refer to the [Statistical standard for geographic
+  areas
+  2023.](https://www.stats.govt.nz/methods/statistical-standard-for-geographic-areas-2023)
+  
+  Contact: [geography@stats.govt.nz](mailto:geography@stats.govt.nz)
+
+Region: New Zealand
+
+Category: 2026
+
+CRS: NZGD2000 / New Zealand Transverse Mercator 2000
+
+------------------------------------------------------------------------
+ Processing steps applied by Stats NZ Geographic Data Service
+------------------------------------------------------------------------
+
+- imported to Stats NZ Geographic Data Service in Geodatabase format on 03 Dec 2025
+- updated with new data on 04 Dec 2025
+- 1 invalid geometries fixed at import time 
+    (see https://datafinder.stats.govt.nz/layer/123515-statistical-area-2-2026/history/)
+- clipped to (33.958°S 166.100°E)-(47.724°S 184.500°E)
+- converted by Stats NZ Geographic Data Service to Shapefile on 06 Sep 2026 (reference #4640351)
+
+------------------------------------------------------------------------
+ LICENSE: Creative Commons Attribution 4.0 International
+ Link: https://datafinder.stats.govt.nz/license/attribution-4-0-international/
+------------------------------------------------------------------------
+
+  Attribution 4.0 International
+  
+  =======================================================================
+  
+  Creative Commons Corporation ("Creative Commons") is not a law firm and
+  does not provide legal services or legal advice. Distribution of
+  Creative Commons public licenses does not create a lawyer-client or
+  other relationship. Creative Commons makes its licenses and related
+  information available on an "as-is" basis. Creative Commons gives no
+  warranties regarding its licenses, any material licensed under their
+  terms and conditions, or any related information. Creative Commons
+  disclaims all liability for damages resulting from their use to the
+  fullest extent possible.
+  
+  Using Creative Commons Public Licenses
+  
+  Creative Commons public licenses provide a standard set of terms and
+  conditions that creators and other rights holders may use to share
+  original works of authorship and other material subject to copyright
+  and certain other rights specified in the public license below. The
+  following considerations are for informational purposes only, are not
+  exhaustive, and do not form part of our licenses.
+  
+       Considerations for licensors: Our public licenses are
+       intended for use by those authorized to give the public
+       permission to use material in ways otherwise restricted by
+       copyright and certain other rights. Our licenses are
+       irrevocable. Licensors should read and understand the terms
+       and conditions of the license they choose before applying it.
+       Licensors should also secure all rights necessary before
+       applying our licenses so that the public can reuse the
+       material as expected. Licensors should clearly mark any
+       material not subject to the license. This includes other CC-
+       licensed material, or material used under an exception or
+       limitation to copyright. More considerations for licensors:
+  	wiki.creativecommons.org/Considerations_for_licensors
+  
+       Considerations for the public: By using one of our public
+       licenses, a licensor grants the public permission to use the
+       licensed material under specified terms and conditions. If
+       the licensor's permission is not necessary for any reason--for
+       example, because of any applicable exception or limitation to
+       copyright--then that use is not regulated by the license. Our
+       licenses grant only permissions under copyright and certain
+       other rights that a licensor has authority to grant. Use of
+       the licensed material may still be restricted for other
+       reasons, including because others have copyright or other
+       rights in the material. A licensor may make special requests,
+       such as asking that all changes be marked or described.
+       Although not required by our licenses, you are encouraged to
+       respect those requests where reasonable. More_considerations
+       for the public: 
+  	wiki.creativecommons.org/Considerations_for_licensees
+  
+  =======================================================================
+  
+  Creative Commons Attribution 4.0 International Public License
+  
+  By exercising the Licensed Rights (defined below), You accept and agree
+  to be bound by the terms and conditions of this Creative Commons
+  Attribution 4.0 International Public License ("Public License"). To the
+  extent this Public License may be interpreted as a contract, You are
+  granted the Licensed Rights in consideration of Your acceptance of
+  these terms and conditions, and the Licensor grants You such rights in
+  consideration of benefits the Licensor receives from making the
+  Licensed Material available under these terms and conditions.
+  
+  Section 1 -- Definitions.
+  
+    a. Adapted Material means material subject to Copyright and Similar
+       Rights that is derived from or based upon the Licensed Material
+       and in which the Licensed Material is translated, altered,
+       arranged, transformed, or otherwise modified in a manner requiring
+       permission under the Copyright and Similar Rights held by the
+       Licensor. For purposes of this Public License, where the Licensed
+       Material is a musical work, performance, or sound recording,
+       Adapted Material is always produced where the Licensed Material is
+       synched in timed relation with a moving image.
+  
+    b. Adapter's License means the license You apply to Your Copyright
+       and Similar Rights in Your contributions to Adapted Material in
+       accordance with the terms and conditions of this Public License.
+  
+    c. Copyright and Similar Rights means copyright and/or similar rights
+       closely related to copyright including, without limitation,
+       performance, broadcast, sound recording, and Sui Generis Database
+       Rights, without regard to how the rights are labeled or
+       categorized. For purposes of this Public License, the rights
+       specified in Section 2(b)(1)-(2) are not Copyright and Similar
+       Rights.
+  
+    d. Effective Technological Measures means those measures that, in the
+       absence of proper authority, may not be circumvented under laws
+       fulfilling obligations under Article 11 of the WIPO Copyright
+       Treaty adopted on December 20, 1996, and/or similar international
+       agreements.
+  
+    e. Exceptions and Limitations means fair use, fair dealing, and/or
+       any other exception or limitation to Copyright and Similar Rights
+       that applies to Your use of the Licensed Material.
+  
+    f. Licensed Material means the artistic or literary work, database,
+       or other material to which the Licensor applied this Public
+       License.
+  
+    g. Licensed Rights means the rights granted to You subject to the
+       terms and conditions of this Public License, which are limited to
+       all Copyright and Similar Rights that apply to Your use of the
+       Licensed Material and that the Licensor has authority to license.
+  
+    h. Licensor means the individual(s) or entity(ies) granting rights
+       under this Public License.
+  
+    i. Share means to provide material to the public by any means or
+       process that requires permission under the Licensed Rights, such
+       as reproduction, public display, public performance, distribution,
+       dissemination, communication, or importation, and to make material
+       available to the public including in ways that members of the
+       public may access the material from a place and at a time
+       individually chosen by them.
+  
+    j. Sui Generis Database Rights means rights other than copyright
+       resulting from Directive 96/9/EC of the European Parliament and of
+       the Council of 11 March 1996 on the legal protection of databases,
+       as amended and/or succeeded, as well as other essentially
+       equivalent rights anywhere in the world.
+  
+    k. You means the individual or entity exercising the Licensed Rights
+       under this Public License. Your has a corresponding meaning.
+  
+  Section 2 -- Scope.
+  
+    a. License grant.
+  
+         1. Subject to the terms and conditions of this Public License,
+            the Licensor hereby grants You a worldwide, royalty-free,
+            non-sublicensable, non-exclusive, irrevocable license to
+            exercise the Licensed Rights in the Licensed Material to:
+  
+              a. reproduce and Share the Licensed Material, in whole or
+                 in part; and
+  
+              b. produce, reproduce, and Share Adapted Material.
+  
+         2. Exceptions and Limitations. For the avoidance of doubt, where
+            Exceptions and Limitations apply to Your use, this Public
+            License does not apply, and You do not need to comply with
+            its terms and conditions.
+  
+         3. Term. The term of this Public License is specified in Section
+            6(a).
+  
+         4. Media and formats; technical modifications allowed. The
+            Licensor authorizes You to exercise the Licensed Rights in
+            all media and formats whether now known or hereafter created,
+            and to make technical modifications necessary to do so. The
+            Licensor waives and/or agrees not to assert any right or
+            authority to forbid You from making technical modifications
+            necessary to exercise the Licensed Rights, including
+            technical modifications necessary to circumvent Effective
+            Technological Measures. For purposes of this Public License,
+            simply making modifications authorized by this Section 2(a)
+            (4) never produces Adapted Material.
+  
+         5. Downstream recipients.
+  
+              a. Offer from the Licensor -- Licensed Material. Every
+                 recipient of the Licensed Material automatically
+                 receives an offer from the Licensor to exercise the
+                 Licensed Rights under the terms and conditions of this
+                 Public License.
+  
+              b. No downstream restrictions. You may not offer or impose
+                 any additional or different terms or conditions on, or
+                 apply any Effective Technological Measures to, the
+                 Licensed Material if doing so restricts exercise of the
+                 Licensed Rights by any recipient of the Licensed
+                 Material.
+  
+         6. No endorsement. Nothing in this Public License constitutes or
+            may be construed as permission to assert or imply that You
+            are, or that Your use of the Licensed Material is, connected
+            with, or sponsored, endorsed, or granted official status by,
+            the Licensor or others designated to receive attribution as
+            provided in Section 3(a)(1)(A)(i).
+  
+    b. Other rights.
+  
+         1. Moral rights, such as the right of integrity, are not
+            licensed under this Public License, nor are publicity,
+            privacy, and/or other similar personality rights; however, to
+            the extent possible, the Licensor waives and/or agrees not to
+            assert any such rights held by the Licensor to the limited
+            extent necessary to allow You to exercise the Licensed
+            Rights, but not otherwise.
+  
+         2. Patent and trademark rights are not licensed under this
+            Public License.
+  
+         3. To the extent possible, the Licensor waives any right to
+            collect royalties from You for the exercise of the Licensed
+            Rights, whether directly or through a collecting society
+            under any voluntary or waivable statutory or compulsory
+            licensing scheme. In all other cases the Licensor expressly
+            reserves any right to collect such royalties.
+  
+  Section 3 -- License Conditions.
+  
+  Your exercise of the Licensed Rights is expressly made subject to the
+  following conditions.
+  
+    a. Attribution.
+  
+         1. If You Share the Licensed Material (including in modified
+            form), You must:
+  
+              a. retain the following if it is supplied by the Licensor
+                 with the Licensed Material:
+  
+                   i. identification of the creator(s) of the Licensed
+                      Material and any others designated to receive
+                      attribution, in any reasonable manner requested by
+                      the Licensor (including by pseudonym if
+                      designated);
+  
+                  ii. a copyright notice;
+  
+                 iii. a notice that refers to this Public License;
+  
+                  iv. a notice that refers to the disclaimer of
+                      warranties;
+  
+                   v. a URI or hyperlink to the Licensed Material to the
+                      extent reasonably practicable;
+  
+              b. indicate if You modified the Licensed Material and
+                 retain an indication of any previous modifications; and
+  
+              c. indicate the Licensed Material is licensed under this
+                 Public License, and include the text of, or the URI or
+                 hyperlink to, this Public License.
+  
+         2. You may satisfy the conditions in Section 3(a)(1) in any
+            reasonable manner based on the medium, means, and context in
+            which You Share the Licensed Material. For example, it may be
+            reasonable to satisfy the conditions by providing a URI or
+            hyperlink to a resource that includes the required
+            information.
+  
+         3. If requested by the Licensor, You must remove any of the
+            information required by Section 3(a)(1)(A) to the extent
+            reasonably practicable.
+  
+         4. If You Share Adapted Material You produce, the Adapter's
+            License You apply must not prevent recipients of the Adapted
+            Material from complying with this Public License.
+  
+  Section 4 -- Sui Generis Database Rights.
+  
+  Where the Licensed Rights include Sui Generis Database Rights that
+  apply to Your use of the Licensed Material:
+  
+    a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+       to extract, reuse, reproduce, and Share all or a substantial
+       portion of the contents of the database;
+  
+    b. if You include all or a substantial portion of the database
+       contents in a database in which You have Sui Generis Database
+       Rights, then the database in which You have Sui Generis Database
+       Rights (but not its individual contents) is Adapted Material; and
+  
+    c. You must comply with the conditions in Section 3(a) if You Share
+       all or a substantial portion of the contents of the database.
+  
+  For the avoidance of doubt, this Section 4 supplements and does not
+  replace Your obligations under this Public License where the Licensed
+  Rights include other Copyright and Similar Rights.
+  
+  Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+  
+    a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+       EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+       AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+       ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+       IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+       WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+       PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+       ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+       KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+       ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+  
+    b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+       TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+       NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+       INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+       COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+       USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+       ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+       DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+       IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+  
+    c. The disclaimer of warranties and limitation of liability provided
+       above shall be interpreted in a manner that, to the extent
+       possible, most closely approximates an absolute disclaimer and
+       waiver of all liability.
+  
+  Section 6 -- Term and Termination.
+  
+    a. This Public License applies for the term of the Copyright and
+       Similar Rights licensed here. However, if You fail to comply with
+       this Public License, then Your rights under this Public License
+       terminate automatically.
+  
+    b. Where Your right to use the Licensed Material has terminated under
+       Section 6(a), it reinstates:
+  
+         1. automatically as of the date the violation is cured, provided
+            it is cured within 30 days of Your discovery of the
+            violation; or
+  
+         2. upon express reinstatement by the Licensor.
+  
+       For the avoidance of doubt, this Section 6(b) does not affect any
+       right the Licensor may have to seek remedies for Your violations
+       of this Public License.
+  
+    c. For the avoidance of doubt, the Licensor may also offer the
+       Licensed Material under separate terms or conditions or stop
+       distributing the Licensed Material at any time; however, doing so
+       will not terminate this Public License.
+  
+    d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+       License.
+  
+  Section 7 -- Other Terms and Conditions.
+  
+    a. The Licensor shall not be bound by any additional or different
+       terms or conditions communicated by You unless expressly agreed.
+  
+    b. Any arrangements, understandings, or agreements regarding the
+       Licensed Material not stated herein are separate from and
+       independent of the terms and conditions of this Public License.
+  
+  Section 8 -- Interpretation.
+  
+    a. For the avoidance of doubt, this Public License does not, and
+       shall not be interpreted to, reduce, limit, restrict, or impose
+       conditions on any use of the Licensed Material that could lawfully
+       be made without permission under this Public License.
+  
+    b. To the extent possible, if any provision of this Public License is
+       deemed unenforceable, it shall be automatically reformed to the
+       minimum extent necessary to make it enforceable. If the provision
+       cannot be reformed, it shall be severed from this Public License
+       without affecting the enforceability of the remaining terms and
+       conditions.
+  
+    c. No term or condition of this Public License will be waived and no
+       failure to comply consented to unless expressly agreed to by the
+       Licensor.
+  
+    d. Nothing in this Public License constitutes or may be interpreted
+       as a limitation upon, or waiver of, any privileges and immunities
+       that apply to the Licensor or You, including from the legal
+       processes of any jurisdiction or authority.
+  
+  =======================================================================
+  
+  Creative Commons is not a party to its public
+  licenses. Notwithstanding, Creative Commons may elect to apply one of
+  its public licenses to material it publishes and in those instances
+  will be considered the "Licensor." The text of the Creative Commons
+  public licenses is dedicated to the public domain under the CC0 Public
+  Domain Dedication. Except for the limited purpose of indicating that
+  material is shared under a Creative Commons public license or as
+  otherwise permitted by the Creative Commons policies published at
+  creativecommons.org/policies, Creative Commons does not authorize the
+  use of the trademark "Creative Commons" or any other trademark or logo
+  of Creative Commons without its prior written consent including,
+  without limitation, in connection with any unauthorized modifications
+  to any of its public licenses or any other arrangements,
+  understandings, or agreements concerning use of licensed material. For
+  the avoidance of doubt, this paragraph does not form part of the
+  public licenses.
+  
+  Creative Commons may be contacted at creativecommons.org. http://creativecommons.org/.
+
