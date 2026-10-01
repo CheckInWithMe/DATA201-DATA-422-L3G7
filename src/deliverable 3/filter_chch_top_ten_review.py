@@ -15,13 +15,13 @@ def filter_to_ten_percent(input_files, output_file):
     # filter data to just data on Christchurch City with columns id, name, neighbourhood_group, number_of_reviews
     christchurch_data = concatenated_file[concatenated_file["neighbourhood_group"] == "Christchurch City"]
     christchurch_data = christchurch_data[["id", "name", "neighbourhood_group", "number_of_reviews"]]
-    christchurch_len = len(pd.read_csv(christchurch_data).index) # note down the number of entries in christchurch_data
+    christchurch_len = len(christchurch_data) # note down the number of entries in christchurch_data
     print("Filtered to Christchurch data")
 
     # sort the christchurch data by reviews and cut off the bottom 90% 
     ten_percent_cutoff = round(len(christchurch_data)*0.1)
     top_ten = christchurch_data.sort_values(by='number_of_reviews', ascending=False)
-    top_ten = output_file.head(ten_percent_cutoff)
+    top_ten = top_ten.head(ten_percent_cutoff)
     top_ten.to_csv(output_file)
     print("Top ten filtered data")
 
