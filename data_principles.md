@@ -68,7 +68,7 @@ Step 5. Rank and filter listings: Sort listings by number_of_reviews in descendi
 Step 6. Save and display results: Save the filtered listings to a CSV file, print the total Christchurch listing count, and display the saved dataset.
 
 # Deliverable 4
-## Dao's deliverable_week8
+## Dao's deliverable_week8.py
 1. Inputs to the pipeline
 
 The pipeline takes multiple raw Airbnb listing CSV files as input.
@@ -101,7 +101,7 @@ Step 5. Select required columns: Keep only the columns needed for the cleaned da
 Step 6. Check data quality: Check the shape of the cleaned dataset and calculate the number of missing values in each column.
 Step 7. Save the processed data: Create the output folder if necessary and save the cleaned Christchurch Airbnb dataset as "output/christchurch_airbnb_cleaned.csv".
 
-## William's deliverable_week8
+## William's tenancy_data_cleaning.py
 1. Inputs to the pipeline
 
 The pipeline takes a quarterly Tenancy dataset containing rental information from 2020–2026 as its input.
@@ -131,5 +131,165 @@ Step 7. Reset the index: Reset the DataFrame index after filtering the data.
 Step 8. Verify and save the data: Print the final row and first five rows for verification, then save the cleaned dataset to data/processed/Detailed-Quarterly-Tenancy.csv.
 
 # Deliverable 5
-## 
+## Tram's append_sa22026 _code_name.py
+1. Inputs to the pipeline
 
+The pipeline takes an Airbnb dataset containing latitude and longitude coordinates as its input.
+
+Input file: ./data/christchurch_air_bnb_code_appended.csv
+Input format: CSV file.
+Required data: Airbnb listing information containing:
+latitude
+longitude
+
+The pipeline also requires a Koordinates API key, which is entered by the user when the program runs.
+
+The pipeline uses Koordinates Statistical Area 2 (SA2) 2026 layer 123515 to identify the statistical area associated with each Airbnb's coordinates.
+
+2. Outputs from the pipeline
+Output	Description
+- "./data/christchurch_air_bnb_code_name_appended.csv"
+A new CSV file containing the original Airbnb data with an additional sa22026_name column containing the SA2 2026 region name associated with each listing's coordinates.
+- SA2 region names
+The Koordinates API is queried using each listing's latitude and longitude to determine its corresponding SA2 2026 region name.
+- Progress/status messages
+The program prints messages indicating when the input has been opened, coordinates have been matched, and the output file has been written.
+- Error messages
+Invalid coordinates, missing API results, or invalid function inputs are reported in the console.
+
+Note: The code currently appends the SA2 region name. The commented-out line could instead be used to append the SA2 code.
+
+3. Main steps in the pipeline
+
+Step 1. Set up the pipeline: Set the working directory, obtain the Koordinates API key, and specify the input/output files and Koordinates SA2 2026 layer.
+Step 2. Read the Airbnb data: Read the input CSV file into a pandas DataFrame and determine the number of rows that will be processed.
+Step 3. Validate the number of rows: Determine whether the pipeline should process all rows or a specified number of rows and check that the requested number is valid.
+Step 4. Query Koordinates: For each Airbnb listing, use its latitude and longitude to send a request to the Koordinates API. The API identifies the Statistical Area 2 2026 region corresponding to those coordinates.
+Step 5. Append the SA2 region name: Extract the SA22026_V1_00_NAME value returned by Koordinates and add it to the Airbnb dataset as a new sa22026_name column.
+Step 6. Handle errors: Check for invalid latitude/longitude values, coordinates that produce no matching result, and invalid query types, reporting these issues in the console.
+Step 7. Save the processed data: Save the original Airbnb data together with the newly appended SA2 region names to ./data/christchurch_air_bnb_code_name_appended.csv.
+
+## Saksi's combine_data.py
+
+1. Inputs to the pipeline
+
+The pipeline takes two processed datasets as inputs.
+
+Tenancy input: data/processed/Detailed-Quarterly-Tenancy.csv
+Airbnb input: data/processed/christchurch_airbnb_appended.csv
+
+The Airbnb dataset contains information such as: sa22026_code, month_year, price
+The Tenancy dataset contains information such as: Location Id, TimeFrame, Median Rent, Total Bonds
+
+The two datasets are matched using their SA2 area code and month.
+
+2. Outputs from the pipeline
+Output	Description
+- "data/processed/christchurch_airbnb_tenancy_joined.csv"
+A combined dataset containing Airbnb observations joined with the corresponding Tenancy data by SA2 area code and month.
+- Airbnb rows before merge
+The number of Airbnb observations before joining the datasets, printed to the console.
+- Rows after merge
+The total number of rows in the joined dataset, printed to the console.
+- Rows with rental data
+The number of Airbnb observations that successfully matched to Tenancy data based on area and month.
+- Rows without rental data
+The number of Airbnb observations that did not have corresponding Tenancy data.
+- Median Airbnb price in Christchurch Central
+The median Airbnb price for listings with SA2 code 326600, calculated and printed to the console.
+
+4. Main steps in the pipeline
+
+Step 1. Load the datasets: Read the processed Airbnb and Tenancy CSV files into pandas DataFrames.
+Step 2. Standardise the Airbnb dates: Convert the Airbnb month_year values into monthly periods so they can be matched consistently with the Tenancy data.
+Step 3. Standardise the Tenancy dates: Convert the Tenancy TimeFrame values into the same monthly period format.
+Step 4. Join the datasets: Merge the Airbnb and Tenancy datasets using sa22026_code from the Airbnb data and Location Id from the Tenancy data, together with the corresponding month. A left join is used so that all Airbnb observations are retained, even when matching rental data is unavailable.
+Step 5. Check the merge: Compare the number of Airbnb rows before and after the merge and count how many observations have matching rental data and how many do not.
+Step 6. Save the joined dataset: Save the merged Airbnb and Tenancy dataset to data/processed/christchurch_airbnb_tenancy_joined.csv.
+Step 7. Calculate Christchurch Central Airbnb price: Filter the Airbnb dataset to SA2 code 326600, representing Christchurch Central, and calculate the median Airbnb price for those listings.
+
+## Dao's "gap between short-term and long-term.py"
+
+1. Inputs to the pipeline
+
+The pipeline takes two datasets as inputs.
+
+Tenancy input: data/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv
+Airbnb input: data/christchurch_airbnb_tenancy_joined.csv
+
+The Airbnb dataset contains information including: sa22026_code, month_year, price
+The Tenancy dataset contains information including: Location Id, TimeFrame, Dwelling Type, Median Rent
+
+These datasets are used to compare short-term Airbnb prices with long-term rental prices across Christchurch locations.
+
+2. Outputs from the pipeline
+- Tenancy rows after filtering
+The number of Tenancy records remaining after filtering to Dwelling Type == "ALL", printed to the console.
+- Joined dataset
+A dataset combining Airbnb and long-term rental information by location and quarter.
+- Rows available for analysis
+The number of observations remaining after removing rows without price, rental, price-gap, or location information.
+- Location summary
+Summary statistics for the Airbnb price gap for each location, including median, mean, maximum, minimum, and number of Airbnb listings.
+- Top 20 locations
+The 20 locations with the largest median Airbnb-to-long-term-rent price gap, printed to the console.
+- Largest-gap location
+The location with the largest median price gap and its median price gap, printed to the console.
+- Airbnb details
+Airbnb price, long-term rental price, and price gap information for the location with the largest median gap.
+- Price-gap boxplot
+A boxplot showing the distribution of Airbnb price gaps for the top 10 locations.
+- Price comparison chart
+A bar chart comparing median short-term Airbnb prices with median long-term rental prices per night for the top 10 locations.
+
+3. Main steps in the pipeline
+
+Step 1. Load the datasets: Read the Tenancy and Airbnb datasets from the data directory.
+Step 2. Convert dates: Convert the Airbnb month_year and Tenancy TimeFrame columns into datetime values and then convert them into quarterly periods.
+Step 3. Filter Tenancy data: Keep the Tenancy records where Dwelling Type is "ALL" and retain the location ID, quarter, dwelling type, and median rent.
+Step 4. Prepare the datasets for joining: Rename the Tenancy Location Id to `
+
+## William's "comparison_by_region.py"
+
+1. Inputs to the pipeline
+
+The pipeline takes a combined Airbnb and Tenancy dataset and an official Statistical Area 2 (SA2) geographic shapefile as inputs.
+Input dataset: christchurch_airbnb_tenancy_joined.csv
+Input shapefile: data/raw/statsnz-statistical-area-2-2026-SHP
+Input formats: CSV and ESRI Shapefile.
+Expected data: The combined dataset contains Airbnb listing information and Tenancy rental information, including:
+sa22026_code, location id, geographic data
+
+The pipeline uses these inputs to calculate Airbnb and rental property counts for each SA2 area and display them on an interactive map.
+
+2. Outputs from the pipeline
+
+- "data/processed/sa2_areas_map.html"
+An interactive HTML map displaying SA2 geographic areas with Airbnb and Tenancy counts.
+- SA2_2026_Code
+The SA2 2026 geographic area code for each mapped region.
+- SA2_2026_Name
+The name of each mapped SA2 region.
+- AirBNB_Count
+The number of Airbnb listings associated with each SA2 code.
+- Rental_Count
+The number of Tenancy records associated with each SA2 code.
+
+The interactive map displays the SA2 code, area name, Airbnb count, and rental count when users interact with the geographic regions.
+
+Only areas containing at least one Airbnb listing or one Tenancy record are included in the final map.
+
+3. Main steps in the pipeline
+
+Step 1. Load the combined dataset: Read the combined Airbnb and Tenancy CSV file into a pandas DataFrame.
+Step 2. Separate Airbnb and Tenancy records: Use the presence or absence of Location Id to distinguish Tenancy records from Airbnb records. Convert the relevant location codes to integers.
+Step 3. Load the SA2 geographic data: Read the official SA2 2026 shapefile using GeoPandas and retain only the SA2 code, SA2 name, and geographic boundary columns.
+Step 4. Standardise geographic codes: Convert the SA2 geographic codes to integers so they can be matched with the codes in the Airbnb and Tenancy datasets.
+Step 5. Count Airbnb listings by SA2 area: Count the Airbnb records associated with each SA2 code and map these counts onto the geographic dataset as AirBNB_Count.
+Step 6. Count Tenancy records by SA2 area: Count the Tenancy records associated with each Location Id and map these counts onto the geographic dataset as Rental_Count.
+Step 7. Filter geographic areas: Retain only SA2 regions that have at least one Airbnb listing or one Tenancy record.
+Step 8. Rename columns: Rename the geographic code and name columns to SA2_2026_Code and SA2_2026_Name for clarity.
+Step 9. Generate the interactive map: Use GeoPandas to create an interactive map with the cartodbpositron basemap. Configure the map to display the SA2 code, region name, Airbnb count, and rental count in the interactive tooltips.
+Step 10. Save the map: Save the interactive map as data/processed/sa2_areas_map.html, allowing it to be opened in a web browser.
+
+Important implementation note: The code counts Tenancy records, not necessarily unique rental properties. If the Tenancy dataset contains multiple records for the same area across different quarters or dwelling categories, Rental_Count will count those records rather than distinct properties.
