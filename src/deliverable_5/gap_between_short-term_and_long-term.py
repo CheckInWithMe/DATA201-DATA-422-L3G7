@@ -167,7 +167,7 @@ plot_compare = analysis.groupby("location_id").agg(
 plot_compare = plot_compare[
     plot_compare["location_id"].isin(top_10_locations)
 ]
-
+output_plot = plt.figure()
 plot_compare.plot(
     x="location_id",
     y=["short_term_price", "long_term_price"],
@@ -181,3 +181,4 @@ plt.ylabel("Median Price ($ per night)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+output_plot.savefig('short_term_vs_long_term.png', dpi=output_plot.dpi, bbox_inches='tight')

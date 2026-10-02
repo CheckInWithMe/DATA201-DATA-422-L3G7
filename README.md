@@ -135,7 +135,7 @@ We decided that the short term rentals are defined as less than or up to a month
 # Changes 
 
 The following rules were implemented in the file organisation:
-- three folders: data(holds all csv files), src(holds all python files), output(holds other files)
+- three folders: data(holds all csv and other output files), src(holds all python files)
 
 The following rules were implemented in each python file:
 - at the top have a docstring that describes what your program does(what the inputs/outputs are)
@@ -160,6 +160,11 @@ christchurch_air_bnb_appended.py
 
 
  ## Dao
+ - code reviews and changes (filtered Christchurch Airbnb listing dataset again) 
+ - updated code from week 8( add column minimum nights to defines short-term and long-term)
+ - delete one file input
+ - reused code repetition
+ 
 
  ## Sakshi
  combine_data.py and processing.py
@@ -182,6 +187,10 @@ comparison by region.py
 - added auto program call
 - changed import/export location directories
 - sanity check: view html output of the file
+
+airbnb_christchurch_prices.py
+- added file (forgot to add)
+- sanity check: view png output of the file
 
 sa2_areas_map.html
 - moved file to data/processed

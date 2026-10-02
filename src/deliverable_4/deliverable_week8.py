@@ -1,0 +1,50 @@
+from pathlib import Path
+import pandas as pd
+
+PROJECT_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = PROJECT_DIR / "data"/ "processed"
+
+file = DATA_DIR / "christchurch_data.csv"
+
+df = pd.read_csv(file)
+
+print("Number of listings:", len(df))
+
+christchurch_data = df[
+    df["neighbourhood_group"].astype(str).str.contains(
+        "Christchurch",
+        case=False,
+        na=False
+    )
+].copy()
+
+print("Number of Christchurch listings:", len(christchurch_data))
+
+columns_to_keep = [
+    "id",
+    "latitude",
+    "longitude",
+    "neighbourhood",
+    "room_type",
+    "price",
+    "availability_365",
+    "month_year",
+    "minimum_nights"
+]
+
+cleaned_christchurch = christchurch_data[columns_to_keep].copy()
+
+print(cleaned_christchurch.shape)
+
+print("\nMissing values:")
+print(cleaned_christchurch.isnull().sum())
+
+OUTPUT_DIR = PROJECT_DIR / "data" / "processed"
+OUTPUT_DIR.mkdir(exist_ok=True)
+
+cleaned_christchurch.to_csv(
+    OUTPUT_DIR / "christchurch_airbnb_cleaned.csv",
+    index=False
+)
+
+print(cleaned_christchurch.shape)
