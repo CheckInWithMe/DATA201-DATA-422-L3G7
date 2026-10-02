@@ -183,6 +183,10 @@ comparison by region.py
 - changed import/export location directories
 - sanity check: view html output of the file
 
+airbnb_christchurch_prices.py
+- added file (forgot to add)
+- sanity check: view png output of the file
+
 sa2_areas_map.html
 - moved file to data/processed
 
