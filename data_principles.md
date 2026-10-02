@@ -1,14 +1,29 @@
 # How this file was generated
 I used ChatGPT to generate the files
+
 This was the chat thread I used: https://chatgpt.com/c/6abdd357-785c-83ec-9c56-439fb5fd6b12
 
 # Data principles
 
-- we tried to divide work(code and documentation) 4 equal ways
+Design Principles
 
-- If the pipeline required certain steps to be done by one person before allowing others to do work, we tried to group that work for one person
+1. Modularity: The pipeline processes each CSV file individually before combining the results, separating file-level processing from the overall dataset analysis.
 
-- When there was not enough work we prioritised having equal work
+2. Data filtering: Only Airbnb listings associated with Christchurch are retained, ensuring the analysis focuses on the relevant geographic area.
+
+3. Data cleaning: Review dates are converted to datetime format, and invalid dates are treated as missing values to prevent conversion errors.
+
+4. Derived variables: A new variable, days_since_last_review, is calculated from the difference between each listing's last review date and the most recent review date in its respective file.
+
+5. Data integration: Christchurch listings from multiple CSV files are combined into a single DataFrame, allowing the review-date information to be analysed together.
+
+6. Data validation and transparency: The pipeline prints the number of input files, file paths, reference dates, and total Christchurch listings. These outputs help users inspect the processing and identify potential issues.
+
+7. Visualisation: A histogram is used to display the distribution of days since the last review, making patterns in review recency easier to interpret.
+
+8. Handling missing data: Missing or invalid location values are excluded from the Christchurch filter, while invalid review dates are converted to missing values and excluded from the histogram.
+
+Important limitation: The pipeline calculates review recency relative to each file's own most recent review date. This means values may not be directly comparable across files if they represent different months.
 
 # Deliverable 3
 ## Sakshi's processing.py
