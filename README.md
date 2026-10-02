@@ -160,6 +160,11 @@ christchurch_air_bnb_appended.py
 
 
  ## Dao
+ -code reviews and changes (filtered Christchurch Airbnb listing dataset again) 
+ -updated code from week 8( add column minimum nights to defines short-term and long-term)
+ -delete one file input
+ -reused code repetition
+ 
 
  ## Sakshi
  combine_data.py and processing.py
