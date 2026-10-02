@@ -1,8 +1,8 @@
 from pathlib import Path
 import pandas as pd
 
-PROJECT_DIR = Path(__file__).resolve().parents[2]
-DATA_DIR = PROJECT_DIR / "data"/ "processed"
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_DIR / "data"
 
 file = DATA_DIR / "christchurch_data.csv"
 
@@ -39,12 +39,10 @@ print(cleaned_christchurch.shape)
 print("\nMissing values:")
 print(cleaned_christchurch.isnull().sum())
 
-OUTPUT_DIR = PROJECT_DIR / "data" / "processed"
+OUTPUT_DIR = PROJECT_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-cleaned_christchurch.to_csv(
+cleaned_christchurch.to_excel(
     OUTPUT_DIR / "christchurch_airbnb_cleaned.csv",
     index=False
 )
-
-print(cleaned_christchurch.shape)
