@@ -46,19 +46,21 @@ def combine_raw_data(folder_path):
         month_year = " ".join(file.split("_")[:2]).title()
         csv_data["month_year"] = month_year
         dataframes.append(csv_data)
+    print("Number of CSV files read:", len(dataframes))
     combined_result = pd.concat(dataframes, ignore_index=True)
     return combined_result
 
 
 def filter_christchurch_data(combined_result):
+    print("Number of rows before filtering christchurch:", combined_result.shape[0])
     christchurch_data = combined_result[combined_result["neighbourhood_group"] == "Christchurch City"]
+    print("Number of rows after filtering christchurch:", christchurch_data.shape[0])
+    print("Number of columns:", christchurch_data.shape[1])
     return christchurch_data
 
 def save_to_csv(christchurch_data, output_file_path):
     christchurch_data.to_csv(output_file_path, index=False)
     print(f"Christchurch City data saved to {output_file_path}")
-    print("Number of rows:", christchurch_data.shape[0])
-    print("Number of columns:", christchurch_data.shape[1])
     print("\nData types:")
     print(christchurch_data.dtypes)
 

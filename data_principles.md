@@ -169,7 +169,7 @@ Step 5. Append the SA2 region name: Extract the SA22026_V1_00_NAME value returne
 Step 6. Handle errors: Check for invalid latitude/longitude values, coordinates that produce no matching result, and invalid query types, reporting these issues in the console.
 Step 7. Save the processed data: Save the original Airbnb data together with the newly appended SA2 region names to ./data/christchurch_air_bnb_code_name_appended.csv.
 
-## Saksi's combine_data.py
+## Sakshi's combine_data.py
 
 1. Inputs to the pipeline
 
