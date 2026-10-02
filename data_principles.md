@@ -418,7 +418,7 @@ Step 6. Handle errors: Check for invalid latitude/longitude values, coordinates 
 
 Step 7. Save the processed data: Save the original Airbnb data together with the newly appended SA2 region names to ./data/christchurch_air_bnb_code_name_appended.csv.
 
-## Saksi's combine_data.py
+## Sakshi's combine_data.py
 
 1. Inputs to the pipeline
 

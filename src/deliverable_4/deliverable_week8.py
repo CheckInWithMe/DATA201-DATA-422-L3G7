@@ -46,5 +46,3 @@ cleaned_christchurch.to_excel(
     OUTPUT_DIR / "christchurch_airbnb_cleaned.csv",
     index=False
 )
-
-
