@@ -135,7 +135,7 @@ We decided that the short term rentals are defined as less than or up to a month
 # Changes 
 
 The following rules were implemented in the file organisation:
-- three folders: data(holds all csv files), src(holds all python files), output(holds other files)
+- three folders: data(holds all csv and other output files), src(holds all python files)
 
 The following rules were implemented in each python file:
 - at the top have a docstring that describes what your program does(what the inputs/outputs are)
