@@ -1,6 +1,6 @@
 # How this file was generated
 I used ChatGPT to generate the files
-
+This was the chat thread I used: https://chatgpt.com/c/6abdd357-785c-83ec-9c56-439fb5fd6b12
 
 # Data principles
 
