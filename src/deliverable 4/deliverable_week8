@@ -1,36 +1,25 @@
+from pathlib import Path
 import pandas as pd
-import glob
-import os
 
-# Find all raw listing files
-files = glob.glob("listing/*.csv")
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_DIR / "data"
 
-print("Number of files:", len(files))
+file = DATA_DIR / "christchurch_data.csv"
 
-christchurch_data = []
+df = pd.read_csv(file)
 
-for file in files:
-    df = pd.read_csv(file)
+print("Number of listings:", len(df))
 
-    df_christchurch = df[
-        df["neighbourhood_group"].astype(str).str.contains(
-            "Christchurch",
-            case=False,
-            na=False
-        )
-    ].copy()
+christchurch_data = df[
+    df["neighbourhood_group"].astype(str).str.contains(
+        "Christchurch",
+        case=False,
+        na=False
+    )
+].copy()
 
-    christchurch_data.append(df_christchurch)
+print("Number of Christchurch listings:", len(christchurch_data))
 
-# Combine datasets
-combined = pd.concat(
-    christchurch_data,
-    ignore_index=True
-)
-
-print("Number of Christchurch listings:", len(combined))
-
-# Keep required columns
 columns_to_keep = [
     "id",
     "latitude",
@@ -39,24 +28,24 @@ columns_to_keep = [
     "room_type",
     "price",
     "availability_365",
-    "month_year"
+    "month_year",
+    "minimum_nights"
 ]
-cleaned_christchurch = combined[columns_to_keep].copy()
 
-# Check missing values
-print("\nCleaned dataset shape:")
+cleaned_christchurch = christchurch_data[columns_to_keep].copy()
+
 print(cleaned_christchurch.shape)
 
 print("\nMissing values:")
 print(cleaned_christchurch.isnull().sum())
 
-# Create output folder if it does not exist
-os.makedirs("output", exist_ok=True)
+OUTPUT_DIR = PROJECT_DIR / "output"
+OUTPUT_DIR.mkdir(exist_ok=True)
 
-# Save cleaned dataset
-cleaned_christchurch.to_csv(
-    "output/christchurch_airbnb_cleaned.csv",
+cleaned_christchurch.to_excel(
+    OUTPUT_DIR / "christchurch_airbnb_cleaned.csv",
     index=False
 )
+
 
 print("\nCleaned dataset saved successfully.")
