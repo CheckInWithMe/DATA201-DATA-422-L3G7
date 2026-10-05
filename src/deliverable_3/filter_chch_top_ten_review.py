@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 import os
 
-os.chdir("/Users/phuongnguyen/Desktop/2026_UC/data201/dev_3/") # set working directory here
+os.chdir("") # set working directory here
 
 INPUT = "./data/processed/christchurch_data.csv"
 OUTPUT = "./data/processed/christchurch_top_ten_filtered.csv"
