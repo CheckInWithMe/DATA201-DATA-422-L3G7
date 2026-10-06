@@ -1,184 +1,62 @@
 from pathlib import Path
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
-# File paths
 PROJECT_DIR = Path(__file__).resolve().parent
 DATA_DIR = PROJECT_DIR / "data"
 
-tenancy = pd.read_csv(
-    DATA_DIR / "Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv"
-)
+file = DATA_DIR / "christchurch_airbnb_tenancy_joined.csv"
 
-airbnb = pd.read_csv(
-    DATA_DIR / "christchurch_airbnb_tenancy_joined.csv"
-)
-#Convert data
+df = pd.read_csv(file)
 
-airbnb["month_year"] = pd.to_datetime(
-    airbnb["month_year"],
-    format="%B %Y",
-    errors="coerce"
-)
+print("Number of listings:", len(df))
 
-tenancy["TimeFrame"] = pd.to_datetime(
-    tenancy["TimeFrame"],
-    errors="coerce"
-)
+df=df.dropna(subset=[
+    'sa22026_name',
+    'minimum_nights',
+    'price'])
 
-airbnb["quarter"] = airbnb ["month_year"].dt.to_period("Q")
+df['rental_type'] = df['minimum_nights'].apply(
+    lambda x: 'Short-term' if x<30
+    else ('Long-term' if x>30 else None)
+    )
 
-tenancy["quarter"] = tenancy["TimeFrame"].dt.to_period("Q")
+df = df.dropna(subset=['rental_type'])
 
-#Rental data needed
+price_comparison = df.groupby(
+    ['sa22026_name', 'rental_type']
+)['price'].median().unstack()
 
-tenancy_clean = tenancy[
-    ["Location Id",
-     "quarter",
-     "Dwelling Type",
-     "Median Rent"]].copy()
+price_comparison = price_comparison.dropna(
+    subset=['Short-term', 'Long-term'])
 
-tenancy_all = tenancy_clean [
-    tenancy_clean["Dwelling Type"] == "ALL"].copy()
+price_comparison['price_gap']=(
+    price_comparison['Short-term'] - price_comparison['Long-term'])
 
-print("Tenancy rows after filtering:")
+price_comparison['absolute_gap'] = (price_comparison['price_gap'].abs())
 
-print(len(tenancy_all), flush= True)
+price_comparison = price_comparison.sort_values('absolute_gap', ascending = False)
 
-tenancy_all = tenancy_all.rename(
-    columns ={"Location Id": "location_id",
-              "Median Rent" : "median_weekly_rent"})
+print(price_comparison)
 
-airbnb_clean = airbnb.rename(
-    columns ={"sa22026_code": "location_id"}).copy()
+largest_gap = price_comparison.iloc[0]
 
-#join airbnb + long-term rental
+print('Area with the largest price gap:')
+print(price_comparison.index[0])
+print('Short-term median:', largest_gap['Short-term'])
+print('Long-term median:', largest_gap['Long-term'])
+print('Price gap:', largest_gap['price_gap'])
 
-joined = airbnb_clean.merge(tenancy_all[
-    ["location_id",
-     "quarter",
-     "median_weekly_rent"]
-    ],
-    on = ["location_id", "quarter"],
-    how = "left")
+#the largest 15 areas
 
+top_15 = price_comparison.head(15)
 
-print("Joined data:")
-print(joined.head(), flush = True)
+top_15[['Short-term', 'Long-term']].plot( kind='bar', figsize=(14,6))
 
-#Convert weekly rent to nightly rent
-
-joined["median_nightly_rent"] = (
-    joined["median_weekly_rent"] /7)
-
-#Calculate price gap# Rename prices clearly
-joined["short_term_price"] = joined["price"]
-joined["long_term_price_per_night"] = joined["median_nightly_rent"]
-
-# Calculate price gap
-joined["price_gap"] = (
-    joined["short_term_price"]
-    - joined["long_term_price_per_night"]
-)
-
-joined ["price_gap"] = (
-    joined["price"] - joined["median_nightly_rent"])
-
-#Remove rows without rent data
-
-analysis = joined.dropna(
-    subset =["price",
-            "median_nightly_rent",
-            "price_gap",
-            "location_id"]).copy()
-
-print("Row available:")
-print(len(analysis), flush = True  )
-
-#summary by location
-
-location_summary = (analysis.groupby("location_id")
-                    ["price_gap"].agg(
-                        median_gap = "median",
-                        mean_gap = "mean",
-                        max_gap = "max",
-                        min_gap = "min",
-                        number_of_airbnbs = "count")
-                    .sort_values("median_gap", ascending= False))
-
-print("TOP 20 Location by median price gap:")
-print(location_summary.head(20), flush = True )
-
-#Find location with largest typical gap
-
-largest_gap_location = location_summary.index[0]
-
-print("Location with largest median price gap:", largest_gap_location ,
-      flush = True )
-
-print("Median gap:", location_summary.iloc[0]["median_gap"], flush = True)
-
-#airbnb details for that location
-
-largest_location_data = analysis[
-    analysis["location_id"] == largest_gap_location]
-
-print("airbnb data for largest gap location:")
-
-print(largest_location_data[
-    ["location_id",
-     "price",
-     "short_term_price",
-     "long_term_price_per_night",
-     "price_gap"]].head(20), flush = True)
-
-#top 10 locations
-
-top_10_locations = ( location_summary.head(10).index)
-
-plot_data = analysis[ analysis["location_id"].isin(top_10_locations)]
-
-plt.figure(figsize=(12,7))
-
-plot_data.boxplot(
-    column ="price_gap",
-    by = "location_id")
-plt.title("Distribution of Airbnb Price Gaps by Location")
-
-plt.suptitle("")
-
-plt.xlabel("Location ID")
-
-plt.ylabel("Airbnb price - long-term rent ($ per night)")
-
-plt.xticks (rotation = 45)
-
-plt.tight_layout()
-
+plt.title('Short-term vs Long-term Airbnb Prices by SA2 Area')
+plt.xlabel('SA2 Area')
+plt.ylabel('Median price per night(NZD)')
+plt.xticks(rotation = 60, ha='right')
+plt.legend(title='Rental type')
+plt.tight_layout
 plt.show()
-
-# Compare short-term and long-term rental prices
-
-plot_compare = analysis.groupby("location_id").agg(
-    short_term_price=("short_term_price", "median"),
-    long_term_price=("long_term_price_per_night", "median")
-).reset_index()
-
-plot_compare = plot_compare[
-    plot_compare["location_id"].isin(top_10_locations)
-]
-output_plot = plt.figure()
-plot_compare.plot(
-    x="location_id",
-    y=["short_term_price", "long_term_price"],
-    kind="bar",
-    figsize=(12, 7)
-)
-
-plt.title("Short-term vs Long-term Rental Prices")
-plt.xlabel("Location ID")
-plt.ylabel("Median Price ($ per night)")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
-output_plot.savefig('short_term_vs_long_term.png', dpi=output_plot.dpi, bbox_inches='tight')
