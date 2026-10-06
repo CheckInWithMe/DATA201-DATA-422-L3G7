@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 PROJECT_DIR = Path(__file__).resolve().parent
-DATA_DIR = PROJECT_DIR / "data"
+DATA_DIR = PROJECT_DIR / "data/processed/"
 
 file = DATA_DIR / "christchurch_airbnb_tenancy_joined.csv"
 
