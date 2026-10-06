@@ -20,8 +20,8 @@ def master(): #run master() to import and clean the data!
     tenancy = tenancy[tenancy['Location Id'] > 0] #Removes '-99' Location Id values.
     tenancy = tenancy[(tenancy['Dwelling Type'] == 'ALL') & (tenancy['Number Of Beds'] == 'ALL')] #Since these are aggregated summary statistics.
     tenancy = tenancy.reset_index()
-    print(tenancy.iloc[-1]) #to hide, put a # in front of this line and the line below.
-    print(tenancy.head())
+    #print(tenancy.iloc[-1]) #to hide, put a # in front of this line and the line below.
+    #print(tenancy.head())
     return tenancy.to_csv('data/processed/Detailed-Quarterly-Tenancy.csv')
 
 
