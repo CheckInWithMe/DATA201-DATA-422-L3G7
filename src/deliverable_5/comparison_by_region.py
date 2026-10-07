@@ -6,10 +6,10 @@ import geopandas
 
 def cleaning(): #Splits joined data into AirBNB and Tenancy data again.
     pandas.set_option('display.max_columns', None)
-    airbnb = pandas.read_csv('christchurch_airbnb_tenancy_joined.csv')
-    tenancy = airbnb[numpy.isnan(airbnb['Location Id']) == False] #to distinguish the join of airbnb and tenancy data.
+    airbnb = pandas.read_csv('data/processed/christchurch_airbnb_tenancy_joined.csv')
+    tenancy = airbnb[pandas.isna(airbnb['Location Id']) == False] #to distinguish the join of airbnb and tenancy data.
     tenancy['Location Id'] = tenancy['Location Id'].astype(int)
-    
+    tenancy['Total Bonds'] = tenancy['Total Bonds'].astype(int) 
     airbnb = airbnb[numpy.isnan(airbnb['Location Id']) == True] #to distinguish the join of airbnb and tenancy data.
     airbnb['sa22026_code'] = airbnb['sa22026_code'].astype(int)
     return tenancy, airbnb
@@ -20,10 +20,12 @@ def master(): #Produces a viewable html interactive map!
     sa2 = sa2[['SA22026_V1', 'SA22026__1', 'geometry']] #Reduces data to just necessary columns.
     sa2['SA22026_V1'] = sa2['SA22026_V1'].astype(int) 
     sa2['AirBNB_Count'] =  sa2['SA22026_V1'].map(airbnb['sa22026_code'].value_counts())
-    sa2['Rental_Count'] = sa2['SA22026_V1'].map(tenancy['Location Id'].value_counts())
+    merger = tenancy[['Location Id', 'Total Bonds']]
+    sa2 = sa2.merge(merger, left_on='SA22026_V1', right_on='Location Id', how='left')
+    sa2 = sa2.rename(columns={'SA22026_V1': 'SA2_2026_Code', 'SA22026__1': 'SA2_2026_Name', 'Total Bonds': 'Rental_Count'}) #Renamed for clarity.
     sa2 = sa2[(sa2['AirBNB_Count'] > 0) | (sa2['Rental_Count'] > 0)] #selects only polygons with at least one entry in either polygon
-    sa2 = sa2.rename(columns={'SA22026_V1': 'SA2_2026_Code', 'SA22026__1': 'SA2_2026_Name'}) #Renamed for clarity.
-    interactive_map = sa2.explore(tooltip=['SA2_2026_Code', 'SA2_2026_Name', 'AirBNB_Count', 'Rental_Count'], tiles='cartodbpositron') #I picked cartodbpositron as API key warning messages are less annoying.
+    interactive_map = sa2.explore(tooltip=['SA2_2026_Code', 'SA2_2026_Name', 'AirBNB_Count', 'Rental_Count'], tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+                   attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ") #Esri doesn't block public wifi, so using this as tile provider.
     interactive_map.save('data/processed/sa2_areas_map.html')
 
 master()
