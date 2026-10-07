@@ -2,24 +2,15 @@ import pandas as pd
 import glob
 import matplotlib.pyplot as plt
 
-# Find all 9 CSV files
-files = glob.glob(
-    r"C:\listing\*.csv"
-)
 
-print("Number of files:", len(files))
+files = glob.glob("listing/*.csv")
 
-for file in files:
-    print(file)
-
-
-# Read and filter Christchurch from all 9 datasets
 christchurch_data = []
 
 for file in files:
     df = pd.read_csv(file)
 
-    # Filter Christchurch
+
     df_christchurch = df[
         df["neighbourhood_group"].astype(str).str.contains(
             "Christchurch",
@@ -44,11 +35,10 @@ for file in files:
         scrape_date - df_christchurch["last_review"]
     ).dt.days
 
-    # Add this month's Christchurch data
+
     christchurch_data.append(df_christchurch)
 
 
-# Combine all Christchurch data
 combined = pd.concat(
     christchurch_data,
     ignore_index=True
@@ -82,5 +72,5 @@ plt.ylabel("Number of Listings")
 plt.title(
     "Distribution of Days Since Last Review - Christchurch"
 )
-
+plt.savefig("days_since_last_review_histogram.png")
 plt.show()
