@@ -4,6 +4,7 @@ import pandas as pd
 
 PROJECT_DIR = Path(__file__).resolve().parent
 DATA_DIR = PROJECT_DIR / "data"
+OUTPUT_FILE = PROJECT_DIR / "short_term_vs_long_term_prices.png"
 
 file = DATA_DIR / "christchurch_airbnb_tenancy_joined.csv"
 
@@ -59,6 +60,5 @@ plt.ylabel('Median price per night(NZD)')
 plt.xticks(rotation = 60, ha='right')
 plt.legend(title='Rental type')
 plt.tight_layout()
-OUTPUT_FILE = PROJECT_DIR / "short_term_vs_long_term_prices.png"
 plt.savefig(OUTPUT_FILE, dpi=300, bbox_inches='tight')
 plt.show()
