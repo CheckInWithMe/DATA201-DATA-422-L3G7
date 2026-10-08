@@ -28,4 +28,4 @@ def display_data(airbnb): #Produces histogram with custom bins the same as the n
     matplotlib.pyplot.show()
     output_plot.savefig('airbnb_frequencies.png', dpi=output_plot.dpi, bbox_inches='tight')
     
-load_func(int(input())) #Adds default import
+#load_func(int(input())) #Adds default import

@@ -51,7 +51,7 @@ def combine_raw_data(folder_path):
     return combined_result
 
 
-def filter_christchurch_data(combined_result):
+"""def filter_christchurch_data(combined_result):
     print("Number of rows before filtering christchurch:", combined_result.shape[0])
     christchurch_data = combined_result[combined_result["neighbourhood_group"] == "Christchurch City"]
     print("Number of rows after filtering christchurch:", christchurch_data.shape[0])
@@ -62,7 +62,7 @@ def save_to_csv(christchurch_data, output_file_path):
     christchurch_data.to_csv(output_file_path, index=False)
     print(f"Christchurch City data saved to {output_file_path}")
     print("\nData types:")
-    print(christchurch_data.dtypes)
+    print(christchurch_data.dtypes)"""
 
 
 
@@ -78,10 +78,10 @@ categorical_columns = [
     "month_year"
 ]
 
-def categorical_summary(christchurch_data, categorical_columns):
+"""def categorical_summary(christchurch_data):
     for column in categorical_columns:
         print("\n", column)
-        print(christchurch_data[column].value_counts())
+        print(christchurch_data[column].value_counts())"""
     
 
 
@@ -106,26 +106,80 @@ numerical_columns = [
     "number_of_reviews_ltm"
 ]
 
-def numerical_summary(christchurch_data, total_numerical_columns, numerical_columns):
+"""def numerical_summary(christchurch_data):
     numerical_summary = christchurch_data[total_numerical_columns].describe().loc[
     ["min", "max", "mean", "std"]]
     monthly_summary = christchurch_data.groupby("month_year")[numerical_columns].agg(
     ["min", "max", "mean", "std"])
     print(f"Total Numerical summary:\n{numerical_summary}")
-    print(f"Monthly Numerical summary:\n{monthly_summary}")
+    print(f"Monthly Numerical summary:\n{monthly_summary}")"""
 
 
 """
 MISSING VALUES SUMMARY
 """
-def missing_values_summary(christchurch_data):
+"""def missing_values_summary(christchurch_data):
     missing_summary = pd.DataFrame({"missing_count": christchurch_data.isna().sum()})
-    print(f"Missing values summary:\n{missing_summary}")
+    print(f"Missing values summary:\n{missing_summary}")"""
 
 
-combined_raw_data = combine_raw_data(folder_path)
+'''combined_raw_data = combine_raw_data(folder_path)
 christchurch_data = filter_christchurch_data(combined_raw_data)
 save_to_csv(christchurch_data, output_file_path)
 categorical_summary(christchurch_data, categorical_columns)
 numerical_summary(christchurch_data, total_numerical_columns, numerical_columns)
 missing_values_summary(christchurch_data)
+'''
+
+def christchurch_data_summary(christchurch_data):
+
+    # Categorical summary
+    print("\n--- Categorical Summary ---")
+
+    for column in categorical_columns:
+        print(f"\n{column}")
+        print(christchurch_data[column].value_counts())
+
+    # Numerical summary
+    print("\n--- Numerical Summary ---")
+
+    numerical_summary = christchurch_data[total_numerical_columns].describe().loc[
+        ["min", "max", "mean", "std"]
+    ]
+
+    monthly_summary = christchurch_data.groupby("month_year")[numerical_columns].agg(
+        ["min", "max", "mean", "std"]
+    )
+
+    print(f"\nTotal Numerical Summary:\n{numerical_summary}")
+    print(f"\nMonthly Numerical Summary:\n{monthly_summary}")
+
+    # Missing values summary
+    print("\n--- Missing Values Summary ---")
+
+    missing_summary = pd.DataFrame({
+        "missing_count": christchurch_data.isna().sum()
+    })
+
+    print(missing_summary)
+
+
+def filter_and_save_christchurch(combined_result, output_file_path):
+
+    print("Number of rows before filtering Christchurch:", combined_result.shape[0])
+
+    christchurch_data = combined_result[
+        combined_result["neighbourhood_group"] == "Christchurch City"
+    ]
+
+    print("Number of rows after filtering Christchurch:", christchurch_data.shape[0])
+    print("Number of columns:", christchurch_data.shape[1])
+
+    christchurch_data.to_csv(output_file_path, index=False)
+
+    print(f"Christchurch City data saved to {output_file_path}")
+
+    print("\nData types:")
+    print(christchurch_data.dtypes)
+
+    return christchurch_data
