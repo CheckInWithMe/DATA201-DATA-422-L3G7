@@ -3,12 +3,8 @@ import pandas
 import numpy
 import matplotlib.pyplot
 
-def load_func(x=9): #Master program. Imports, cleans, and plots. X can be changed if temporal scope of listings change, assuming data starts from listings(1).
-    files = []
-    for i in range(1, x + 1):
-        df = pandas.read_csv(f'listings({i}).csv')
-        files.append(df)
-    airbnb = pandas.concat(files, ignore_index=True) #9 Months, so listings(1)-listings(9).
+def load_func(): #Master program. Imports, cleans, and plots. X can be changed if temporal scope of listings change, assuming data starts from listings(1).
+    airbnb = pandas.read_csv('data/processed/christchurch_airbnb_cleaned.csv')
     clean_airbnb = clean_data(airbnb)
     #pandas.set_option('display.max_columns', None)
     #print(clean_airbnb.head()) #to view dataset, change the last line to 'return clean_airbnb.head().
@@ -16,7 +12,6 @@ def load_func(x=9): #Master program. Imports, cleans, and plots. X can be change
 
 def clean_data(airbnb): #Removes NaN values, simplifies DataFrame to necessary columns and scope.
     clean_airbnb = airbnb[['neighbourhood_group', 'price']]
-    clean_airbnb = clean_airbnb[clean_airbnb['neighbourhood_group'] == 'Christchurch City']
     clean_airbnb = clean_airbnb.dropna()
     return clean_airbnb
 
@@ -26,6 +21,5 @@ def display_data(airbnb): #Produces histogram with custom bins the same as the n
     matplotlib.pyplot.xlabel('AirBNB nightly price ($NZD)')
     matplotlib.pyplot.title('Christchurch AirBNB price frequencies')
     matplotlib.pyplot.show()
-    output_plot.savefig('airbnb_frequencies.png', dpi=output_plot.dpi, bbox_inches='tight')
+    output_plot.savefig('data/processed/airbnb_frequencies.png', dpi=output_plot.dpi, bbox_inches='tight')
     
-load_func(int(input())) #Adds default import
