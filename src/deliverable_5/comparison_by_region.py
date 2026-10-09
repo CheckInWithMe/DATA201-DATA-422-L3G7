@@ -1,4 +1,6 @@
-'''Compares counts of AirBNB and Tenancy properties by SA2 area codes, displaying them in an interactive HTML map that is saved locally.'''
+
+'''Compares Airbnb and tenancy data by SA2 area and saves a static map locally.'''
+
 import pandas
 import numpy
 import matplotlib.pyplot
@@ -27,7 +29,7 @@ def cleaning():
         tenancy['Total Bonds'], errors='coerce'
     )
 
-    # Remove tenancy rows without the required values
+    # Remove rows with missing tenancy information
     tenancy = tenancy.dropna(
         subset=['Location Id', 'Total Bonds']
     ).copy()
@@ -51,19 +53,90 @@ def cleaning():
     airbnb['sa22026_code'] = airbnb['sa22026_code'].astype(int)
 
     return tenancy, airbnb
-    
-def master(): #Produces a viewable html interactive map!
-    tenancy, airbnb = cleaning()
-    sa2 = geopandas.read_file('data/raw/statsnz-statistical-area-2-2026-SHP') #Imports official SA2 shapefile.
-    sa2 = sa2[['SA22026_V1', 'SA22026__1', 'geometry']] #Reduces data to just necessary columns.
-    sa2['SA22026_V1'] = sa2['SA22026_V1'].astype(int) 
-    sa2['AirBNB_Count'] =  sa2['SA22026_V1'].map(airbnb['sa22026_code'].value_counts())
-    merger = tenancy[['Location Id', 'Total Bonds']]
-    sa2 = sa2.merge(merger, left_on='SA22026_V1', right_on='Location Id', how='left')
-    sa2 = sa2.rename(columns={'SA22026_V1': 'SA2_2026_Code', 'SA22026__1': 'SA2_2026_Name', 'Total Bonds': 'Rental_Count'}) #Renamed for clarity.
-    sa2 = sa2[(sa2['AirBNB_Count'] > 0) | (sa2['Rental_Count'] > 0)] #selects only polygons with at least one entry in either polygon
-    interactive_map = sa2.explore(tooltip=['SA2_2026_Code', 'SA2_2026_Name', 'AirBNB_Count', 'Rental_Count'], tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-                   attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ") #Esri doesn't block public wifi, so using this as tile provider.
-    interactive_map.save('data/processed/sa2_areas_map.html')
 
-#master()
+
+def master():
+    # Load the cleaned data
+    tenancy, airbnb = cleaning()
+
+    # Load the official SA2 shapefile
+    sa2 = geopandas.read_file(
+        'data/raw/statsnz-statistical-area-2-2026-SHP'
+    )
+
+    # Keep only the required columns
+    sa2 = sa2[['SA22026_V1', 'SA22026__1', 'geometry']].copy()
+    sa2['SA22026_V1'] = sa2['SA22026_V1'].astype(int)
+
+    # Count Airbnb properties in each SA2 area
+    airbnb_counts = airbnb['sa22026_code'].value_counts()
+    sa2['AirBNB_Count'] = sa2['SA22026_V1'].map(airbnb_counts)
+
+    # Combine tenancy records by SA2 code before merging
+    tenancy_counts = (
+        tenancy.groupby('Location Id', as_index=False)['Total Bonds']
+        .sum()
+    )
+
+    # Merge tenancy counts with SA2 geographic areas
+    sa2 = sa2.merge(
+        tenancy_counts,
+        left_on='SA22026_V1',
+        right_on='Location Id',
+        how='left'
+    )
+
+    # Rename columns for clarity
+    sa2 = sa2.rename(columns={
+        'SA22026_V1': 'SA2_2026_Code',
+        'SA22026__1': 'SA2_2026_Name',
+        'Total Bonds': 'Rental_Count'
+    })
+
+    # Replace missing counts with zero
+    sa2['AirBNB_Count'] = pandas.to_numeric(
+        sa2['AirBNB_Count'], errors='coerce'
+    ).fillna(0)
+
+    sa2['Rental_Count'] = pandas.to_numeric(
+        sa2['Rental_Count'], errors='coerce'
+    ).fillna(0)
+
+    # Reset the index
+    sa2 = sa2.reset_index(drop=True)
+
+    # Create a static map showing Airbnb counts
+    fig, ax = matplotlib.pyplot.subplots(figsize=(12, 8))
+
+    sa2.plot(
+        column='AirBNB_Count',
+        legend=True,
+        ax=ax,
+        missing_kwds={
+            'color': 'lightgrey',
+            'label': 'No Airbnb records'
+        }
+    )
+
+    ax.set_title('Airbnb Properties by SA2 Area')
+    ax.set_axis_off()
+
+    fig.tight_layout()
+
+    # Save the map as a PNG image
+    fig.savefig(
+        'data/processed/sa2_areas_map.png',
+        dpi=300,
+        bbox_inches='tight'
+    )
+
+    matplotlib.pyplot.close(fig)
+
+    print(
+        'Static map saved to data/processed/sa2_areas_map.png'
+    )
+
+
+# Run the function when this script is executed directly
+if __name__ == '__main__':
+    master()

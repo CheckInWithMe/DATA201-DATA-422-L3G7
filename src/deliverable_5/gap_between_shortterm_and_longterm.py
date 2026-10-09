@@ -7,7 +7,7 @@ DATA_DIR = PROJECT_DIR / "data"
 OUTPUT_FILE = PROJECT_DIR / "short_term_vs_long_term_prices.png"
 
 def main():
-    file = DATA_DIR / "christchurch_airbnb_tenancy_joined.csv"
+    file = "./data/processed/christchurch_airbnb_tenancy_joined.csv"
 
     df = pd.read_csv(file)
 
