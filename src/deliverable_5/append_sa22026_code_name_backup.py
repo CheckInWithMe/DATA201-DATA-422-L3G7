@@ -7,14 +7,14 @@ import os
 import threading
 from tqdm import tqdm
 
-os.chdir("") # Set working directory here 
+#os.chdir("") # Set working directory here 
 
 tqdm.pandas(desc="Processing rows") # Make a progress bar that applies to pandas functions
 
 KEY = input("What is your API key?: ")
 LAYER_ID = "123515" # taken from https://datafinder.stats.govt.nz/layer/123515-statistical-area-2-2026/
-INPUT_FILE = "./data/christchurch_airbnb_cleaned.csv"
-OUTPUT_FILE = "./data/christchurch_air_bnb_code_name_appended_threaded.csv"
+INPUT_FILE = "data/processed/christchurch_airbnb_cleaned.csv"
+OUTPUT_FILE = "data/processed/christchurch_air_bnb_code_name_appended_threaded.csv"
     
 
 def query(latitude, longitude, type):
@@ -99,11 +99,11 @@ def get_df_chunks(df,final_row, chunk_no):
 
     return chunks, chunk_indexes
 
-def main(input, output):
+def main():
     '''Main function'''
 
     # read the input file you want to append 'sa22026_code' and 'sa22026_name' columns to
-    air_bnb_df = pd.read_csv(input)
+    air_bnb_df = pd.read_csv(INPUT_FILE)
     df_len = len(air_bnb_df)
 
     # separate out the file into 5 separate chunks to make 
@@ -142,6 +142,5 @@ def main(input, output):
     df_combined = pd.concat(sorted_results, ignore_index=True)
 
     # read final concatenated data to a csv
-    df_combined.to_csv(output)
+    df_combined.to_csv(OUTPUT_FILE)
 
-main(INPUT_FILE, OUTPUT_FILE)

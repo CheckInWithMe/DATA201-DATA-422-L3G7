@@ -4,14 +4,52 @@ import numpy
 import matplotlib.pyplot
 import geopandas
 
-def cleaning(): #Splits joined data into AirBNB and Tenancy data again.
+
+def cleaning():
     pandas.set_option('display.max_columns', None)
-    airbnb = pandas.read_csv('data/processed/christchurch_airbnb_tenancy_joined.csv')
-    tenancy = airbnb[pandas.isna(airbnb['Location Id']) == False] #to distinguish the join of airbnb and tenancy data.
+
+    data = pandas.read_csv(
+        'data/processed/christchurch_airbnb_tenancy_joined.csv',
+        low_memory=False
+    )
+
+    data.columns = data.columns.str.strip()
+
+    # Separate tenancy records from Airbnb records
+    tenancy = data[data['Location Id'].notna()].copy()
+    airbnb = data[data['Location Id'].isna()].copy()
+
+    # Convert tenancy columns to numeric values
+    tenancy['Location Id'] = pandas.to_numeric(
+        tenancy['Location Id'], errors='coerce'
+    )
+    tenancy['Total Bonds'] = pandas.to_numeric(
+        tenancy['Total Bonds'], errors='coerce'
+    )
+
+    # Remove tenancy rows without the required values
+    tenancy = tenancy.dropna(
+        subset=['Location Id', 'Total Bonds']
+    ).copy()
+
     tenancy['Location Id'] = tenancy['Location Id'].astype(int)
-    tenancy['Total Bonds'] = tenancy['Total Bonds'].astype(int) 
-    airbnb = airbnb[numpy.isnan(airbnb['Location Id']) == True] #to distinguish the join of airbnb and tenancy data.
+    tenancy['Total Bonds'] = tenancy['Total Bonds'].astype(int)
+
+    # Convert Airbnb SA2 codes to numeric values
+    airbnb['sa22026_code'] = pandas.to_numeric(
+        airbnb['sa22026_code'], errors='coerce'
+    )
+
+    print("Total Airbnb records:", len(airbnb))
+    print(
+        "Airbnb records with missing SA2 codes:",
+        airbnb['sa22026_code'].isna().sum()
+    )
+
+    # Remove Airbnb records without SA2 codes
+    airbnb = airbnb.dropna(subset=['sa22026_code']).copy()
     airbnb['sa22026_code'] = airbnb['sa22026_code'].astype(int)
+
     return tenancy, airbnb
     
 def master(): #Produces a viewable html interactive map!
@@ -28,4 +66,4 @@ def master(): #Produces a viewable html interactive map!
                    attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ") #Esri doesn't block public wifi, so using this as tile provider.
     interactive_map.save('data/processed/sa2_areas_map.html')
 
-master()
+#master()

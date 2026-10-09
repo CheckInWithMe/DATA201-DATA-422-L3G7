@@ -2,15 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-os.chdir("") # Set working directory
+#os.chdir("") # Set working directory
 
-INPUT = "./data/processed/christchurch_data.csv"
-OUTPUT = "./data/processed/days_since_last_review_histogram.png" # Save output histogram as png
-
-def get_days_since_last_review(input):
+def get_days_since_last_review(christchurch_data):
     '''create a dataframe with days_since_last_review column for each entry in input data'''
-    df_christchurch = pd.read_csv(input)
-
+    df_christchurch = christchurch_data.copy()
     # Convert last_review to datetime
     df_christchurch["last_review"] = pd.to_datetime(
         df_christchurch["last_review"],
@@ -53,5 +49,5 @@ def plot_distribution(df, output):
     plt.show()
 
 # Main program
-df_last_review = get_days_since_last_review(INPUT)
-plot_distribution(df_last_review, OUTPUT)
+"""df_last_review = get_days_since_last_review(INPUT)
+plot_distribution(df_last_review, OUTPUT)"""

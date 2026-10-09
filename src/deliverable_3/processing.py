@@ -34,13 +34,12 @@ Parameters:
  FILTER CHRISTCHURCH CITY DATA
 """
 
-folder_path = "data/raw"        # Change the working directory in folder_path if required.
-output_file_path = "data/processed/christchurch_data.csv"
-
 def combine_raw_data(folder_path):
     dataframes = []
     for file in os.listdir(folder_path):
-        if not file.endswith("_listings.csv"): continue
+        if not file.endswith("_listings.csv"): 
+            print(f"Reading file: {file}")
+            continue
         file_path = os.path.join(folder_path, file)
         csv_data = pd.read_csv(file_path)
         month_year = " ".join(file.split("_")[:2]).title()
@@ -51,32 +50,18 @@ def combine_raw_data(folder_path):
     return combined_result
 
 
-def filter_christchurch_data(combined_result):
+def filter_christchurch_data(combined_result, output_file_path):
     print("Number of rows before filtering christchurch:", combined_result.shape[0])
     christchurch_data = combined_result[combined_result["neighbourhood_group"] == "Christchurch City"]
     print("Number of rows after filtering christchurch:", christchurch_data.shape[0])
     print("Number of columns:", christchurch_data.shape[1])
-    return christchurch_data
-
-def save_to_csv(christchurch_data, output_file_path):
     christchurch_data.to_csv(output_file_path, index=False)
-    print(f"Christchurch City data saved to {output_file_path}")
-    print("\nData types:")
-    print(christchurch_data.dtypes)
-
-
+    return christchurch_data
 
 
 """
 CATEGORICAL SUMMARY
 """
-
-categorical_columns = [
-    "room_type",
-    "neighbourhood",
-    "room_type",
-    "month_year"
-]
 
 def categorical_summary(christchurch_data, categorical_columns):
     for column in categorical_columns:
@@ -88,23 +73,6 @@ def categorical_summary(christchurch_data, categorical_columns):
 """
 NUMERICAL SUMMARY
 """
-
-total_numerical_columns = [
-    "price",
-    "minimum_nights",
-    "number_of_reviews",
-    "reviews_per_month",
-    "calculated_host_listings_count",
-    "availability_365",
-    "number_of_reviews_ltm"
-]
-
-numerical_columns = [
-    "price",
-    "number_of_reviews",
-    "calculated_host_listings_count",
-    "number_of_reviews_ltm"
-]
 
 def numerical_summary(christchurch_data, total_numerical_columns, numerical_columns):
     numerical_summary = christchurch_data[total_numerical_columns].describe().loc[
@@ -123,9 +91,8 @@ def missing_values_summary(christchurch_data):
     print(f"Missing values summary:\n{missing_summary}")
 
 
-combined_raw_data = combine_raw_data(folder_path)
+"""combined_raw_data = combine_raw_data(folder_path)
 christchurch_data = filter_christchurch_data(combined_raw_data)
-save_to_csv(christchurch_data, output_file_path)
 categorical_summary(christchurch_data, categorical_columns)
 numerical_summary(christchurch_data, total_numerical_columns, numerical_columns)
-missing_values_summary(christchurch_data)
+missing_values_summary(christchurch_data)"""

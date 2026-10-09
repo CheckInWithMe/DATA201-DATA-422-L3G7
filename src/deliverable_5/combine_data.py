@@ -28,17 +28,17 @@ output_file_path="data/processed/christchurch_airbnb_tenancy_joined.csv"
 """
 Reads the Airbnb and tenancy CSV files and returns them as DataFrames.
 """
-def read_csv_file(airbnb_file_path, tenancy_file_path):
+"""def read_csv_file(airbnb_file_path, tenancy_file_path):
     tenancy_data = pd.read_csv(tenancy_file_path)
     christchurch_data = pd.read_csv(airbnb_file_path)
     return christchurch_data, tenancy_data
-
+"""
 
 """ 
 CONVERT DATES TO MONTHLY PERIODS 
 """
 
-def convert_to_monthly_period(christchurch_data, tenancy_data):
+def join_airbnb_with_tenancy(christchurch_data, tenancy_data, output):
     christchurch_data['month'] = pd.to_datetime(
         christchurch_data['month_year'],
         format='mixed'
@@ -48,19 +48,24 @@ def convert_to_monthly_period(christchurch_data, tenancy_data):
         tenancy_data['TimeFrame']
     ).dt.to_period('M')
 
+    merged_data = christchurch_data.merge(
+            tenancy_data,
+            left_on=['sa22026_code', 'month'],
+            right_on=['Location Id', 'month'],
+            how='left'
+        )
+    merged_data.to_csv(output,index=False)
+    return merged_data
+
+
+
 
 
 """
 JOIN AIRBNB DATA WITH TENANCY DATA
 """
-def join_airbnb_with_tenancy(christchurch_data, tenancy_data):
-    merged_data = christchurch_data.merge(
-        tenancy_data,
-        left_on=['sa22026_code', 'month'],
-        right_on=['Location Id', 'month'],
-        how='left'
-    )
-    return merged_data
+
+    
 
 
 
@@ -68,11 +73,11 @@ def join_airbnb_with_tenancy(christchurch_data, tenancy_data):
 """
 SAVE MERGED DATASET
 """
-def save_data_to_csv(data, output_file_path):
+"""def save_data_to_csv(data, output_file_path):
     data.to_csv(
         output_file_path,
         index=False
-    )
+    )"""
 
 
 """
@@ -86,24 +91,25 @@ def calculate_median_price(christchurch_data, area_code):
     return median_price
 
 
-christchurch_data, tenancy_data = read_csv_file(airbnb_file_path, tenancy_file_path)
-convert_to_monthly_period(christchurch_data, tenancy_data)
-merged_data = join_airbnb_with_tenancy(christchurch_data, tenancy_data)
-save_data_to_csv(merged_data, output_file_path)
-median_price = calculate_median_price(christchurch_data, 326600)
+#christchurch_data, tenancy_data = read_csv_file(airbnb_file_path, tenancy_file_path)
+#convert_to_monthly_period(christchurch_data, tenancy_data)
+#merged_data = join_airbnb_with_tenancy(christchurch_data, tenancy_data)
+#save_data_to_csv(merged_data, output_file_path)
+#median_price = calculate_median_price(christchurch_data, 326600)
 
 """
 CHECK MERGE RESULTS
 """
-print("Airbnb rows before merge:", len(christchurch_data))
-print("Rows after merge:", len(merged_data))
-print(
-    "Rows with rental data:",
-    merged_data['Median Rent'].notna().sum()
-)
-print(
-    "Rows without rental data:",
-    merged_data['Median Rent'].isna().sum()
-)
+def display_results(christchurch_data, merged_data, median_price):
+    print("Airbnb rows before merge:", len(christchurch_data))
+    print("Rows after merge:", len(merged_data))
+    print(
+        "Rows with rental data:",
+        merged_data['Median Rent'].notna().sum()
+    )
+    print(
+        "Rows without rental data:",
+        merged_data['Median Rent'].isna().sum()
+    )
 
-print("Median Airbnb price in Christchurch Central:", median_price)
+    print("Median Airbnb price in Christchurch Central:", median_price)
