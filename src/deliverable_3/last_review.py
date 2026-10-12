@@ -1,24 +1,12 @@
 import pandas as pd
-import glob
 import matplotlib.pyplot as plt
+import os
 
+#os.chdir("") # Set working directory
 
-files = glob.glob("listing/*.csv")
-
-christchurch_data = []
-
-for file in files:
-    df = pd.read_csv(file)
-
-
-    df_christchurch = df[
-        df["neighbourhood_group"].astype(str).str.contains(
-            "Christchurch",
-            case=False,
-            na=False
-        )
-    ].copy()
-
+def get_days_since_last_review(christchurch_data):
+    '''create a dataframe with days_since_last_review column for each entry in input data'''
+    df_christchurch = christchurch_data.copy()
     # Convert last_review to datetime
     df_christchurch["last_review"] = pd.to_datetime(
         df_christchurch["last_review"],
@@ -28,49 +16,38 @@ for file in files:
     # Find the most recent review date for this month
     scrape_date = df_christchurch["last_review"].max()
 
-    print("Scrape date:", scrape_date)
-
     # Calculate days since last review
     df_christchurch["days_since_last_review"] = (
         scrape_date - df_christchurch["last_review"]
     ).dt.days
 
+    # Get the number of missing values before dropping the rows with null values in "days_since_last_review" column
+    missing_values = df_christchurch["days_since_last_review"].isna().sum()
+    df_last_review = df_christchurch["days_since_last_review"]
 
-    christchurch_data.append(df_christchurch)
+    # Summary of scraped date and missing values
+    print("Most recent review date:", scrape_date)
+    print(f"Number of rows missing values in days_since_last_review colunm: {missing_values}")
 
-
-combined = pd.concat(
-    christchurch_data,
-    ignore_index=True
-)
-
-print(
-    "Number of Christchurch listings:",
-    len(combined)
-)
+    return df_last_review
 
 
-# Display the results
-print(
-    combined[
-        [
-            "last_review",
-            "days_since_last_review"
-        ]
-    ].head(10)
-)
+def plot_distribution(df, output):
+    '''Plot a histogram of distribution of days since last review'''
 
+    plt.hist(
+        df,
+        bins=30
+    )
+    plt.xlabel("Days Since Last Review")
+    plt.ylabel("Number of Listings")
+    plt.title(
+        "Distribution of Days Since Last Review - Christchurch"
+    )
 
-# Plot distribution
-plt.hist(
-    combined["days_since_last_review"].dropna(),
-    bins=30
-)
+    plt.savefig(output)
+    plt.show()
 
-plt.xlabel("Days Since Last Review")
-plt.ylabel("Number of Listings")
-plt.title(
-    "Distribution of Days Since Last Review - Christchurch"
-)
-plt.savefig("days_since_last_review_histogram.png")
-plt.show()
+# Main program
+"""df_last_review = get_days_since_last_review(INPUT)
+plot_distribution(df_last_review, OUTPUT)"""
