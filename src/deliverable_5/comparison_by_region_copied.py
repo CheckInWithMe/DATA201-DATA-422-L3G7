@@ -25,7 +25,7 @@ def master(): #Produces a viewable html interactive map!
     sa2['AirBNB_Count'] =  sa2['SA22026_V1'].map(airbnb['sa22026_code'].value_counts())
     merger = tenancy[['Location Id', 'Total Bonds']]
     
-    sa2 = sa2.merge(merger, left_on='SA22026_V1', right_on='Location Id', how='left')
+    sa2 = sa2.merge(merger, left_on='SA22026_V1', right_on='Location Id', how='left', validate='many_to_one')
     
     sa2 = sa2.rename(columns={'SA22026_V1': 'SA2_2026_Code', 'SA22026__1': 'SA2_2026_Name', 'Total Bonds': 'Rental_Count'}) #Renamed for clarity.
     sa2 = sa2[(sa2['AirBNB_Count'] > 0) | (sa2['Rental_Count'] > 0)] #selects only polygons with at least one entry in either polygon

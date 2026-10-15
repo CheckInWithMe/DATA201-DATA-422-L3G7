@@ -20,10 +20,10 @@ processing.numerical_summary(christchurch_data, total_numerical_columns, numeric
 processing.missing_values_summary(christchurch_data)
 
 df_last_review = last_review_fixed.get_days_since_last_review(christchurch_data)
-last_review_fixed.plot_distribution(df_last_review, "./data/processed/days_since_last_review_histogram.png") # Save output histogram as png
+#last_review_fixed.plot_distribution(df_last_review, "./data/processed/days_since_last_review_histogram.png") # Save output histogram as png
 
 clean_airbnb = airbnb_christchurch_prices.clean_data(christchurch_data)
-airbnb_christchurch_prices.display_data(clean_airbnb, "./data/processed/airbnb_frequencies.png")
+#airbnb_christchurch_prices.display_data(clean_airbnb, "./data/processed/airbnb_frequencies.png")
 
 filter_chch_top_ten_review.filter_to_ten_percent(christchurch_data,"./data/processed/christchurch_top_ten_filtered.csv")
 
@@ -45,6 +45,6 @@ merged_data = combine_data.join_airbnb_with_tenancy(christchurch_data_with_codes
 median_price = combine_data.calculate_median_price(christchurch_data_with_codes, 326600)
 combine_data.display_results(christchurch_data_with_codes, merged_data, median_price)
 
-comparison_by_region_copied.master()
+#comparison_by_region_copied.master()
 
 gap_between_shortterm_and_longterm.main()
