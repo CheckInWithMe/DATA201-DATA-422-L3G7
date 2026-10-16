@@ -15,7 +15,7 @@ tqdm.pandas(desc="Processing rows") # Make a progress bar that applies to pandas
 KEY = input("What is your API key?: ")
 LAYER_ID = "123515" # taken from https://datafinder.stats.govt.nz/layer/123515-statistical-area-2-2026/
 INPUT_FILE = "data/processed/christchurch_airbnb_cleaned.csv"
-OUTPUT_FILE = "data/processed/test_sa22026.csv"
+OUTPUT_FILE = "data/processed/christchurch_sa22026.csv"
     
 
 def query(latitude, longitude):
