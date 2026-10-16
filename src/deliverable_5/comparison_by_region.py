@@ -32,4 +32,4 @@ def master(): #Produces a viewable html interactive map!
     attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ") #Esri doesn't block public wifi, so using this as tile provider.
     interactive_map.save('./data/processed/sa2_areas_map.html')    
     
-master()
+#master()

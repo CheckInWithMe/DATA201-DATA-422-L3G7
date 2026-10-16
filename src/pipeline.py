@@ -1,7 +1,7 @@
-from deliverable_3 import processing, last_review_fixed, filter_chch_top_ten_review, airbnb_christchurch_prices
+from deliverable_3 import processing, last_review, filter_chch_top_ten_review, airbnb_christchurch_prices
 from deliverable_4 import clean_christchurch_data, tenancy_data_cleaning
-#from deliverable_5 import append_sa22026_code_name
-from deliverable_5 import combine_data, comparison_by_region_copied, gap_between_shortterm_and_longterm
+#from deliverable_5 import append_sa22026_code_name, comparison_by_region,
+from deliverable_5 import combine_data, comparison_by_region, gap_between_shortterm_and_longterm
 import pandas as pd
 
 #Seggregate christchurch data from the combined raw data and save it to a csv file
@@ -19,11 +19,11 @@ numerical_columns = ["price", "number_of_reviews", "calculated_host_listings_cou
 processing.numerical_summary(christchurch_data, total_numerical_columns, numerical_columns)
 processing.missing_values_summary(christchurch_data)
 
-df_last_review = last_review_fixed.get_days_since_last_review(christchurch_data)
-#last_review_fixed.plot_distribution(df_last_review, "./data/processed/days_since_last_review_histogram.png") # Save output histogram as png
+df_last_review = last_review.get_days_since_last_review(christchurch_data)
+last_review.plot_distribution(df_last_review, "./data/processed/days_since_last_review_histogram.png") # Save output histogram as png
 
 clean_airbnb = airbnb_christchurch_prices.clean_data(christchurch_data)
-#airbnb_christchurch_prices.display_data(clean_airbnb, "./data/processed/airbnb_frequencies.png")
+airbnb_christchurch_prices.display_data(clean_airbnb, "./data/processed/airbnb_frequencies.png")
 
 filter_chch_top_ten_review.filter_to_ten_percent(christchurch_data,"./data/processed/christchurch_top_ten_filtered.csv")
 
@@ -40,11 +40,11 @@ tenancy_data = tenancy_data_cleaning.clean_data('./data/raw/Detailed-Quarterly-T
 #append_sa22026_code_name.main()
 
 #join both
-christchurch_data_with_codes = pd.read_csv("./data/processed/test_sa22026.csv")
+christchurch_data_with_codes = pd.read_csv("./data/processed/christchurch_sa22026.csv")
 merged_data = combine_data.join_airbnb_with_tenancy(christchurch_data_with_codes, tenancy_data, "./data/processed/christchurch_airbnb_tenancy_joined.csv")
 median_price = combine_data.calculate_median_price(christchurch_data_with_codes, 326600)
 combine_data.display_results(christchurch_data_with_codes, merged_data, median_price)
 
-#comparison_by_region_copied.master()
+#comparison_by_region.master()
 
 gap_between_shortterm_and_longterm.main()
